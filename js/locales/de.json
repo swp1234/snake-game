@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "Wird geladen..."
+  },
+  "ad": {
+    "placeholder": "Anzeigenbereich",
+    "placeholder_interstitial": "Anzeigenbereich (Vollbild)",
+    "label": "Anzeige",
+    "countdown": "Sekunden bis zum Schließen",
+    "close": "✕ Schließen"
+  },
+  "menu": {
+    "subtitle": "Klassisches Schlangespiel",
+    "highScore": "Höchste Punktzahl",
+    "startGame": "Spiel starten",
+    "modes": "🎮 Spielmodi",
+    "stats": "📊 Statistiken",
+    "hint": "Verwenden Sie Pfeiltasten/WASD oder Wischen zum Steuern",
+    "home": "DopaBrain Startseite"
+  },
+  "screens": {
+    "back": "← Zurück",
+    "modes": "Spielmodi",
+    "stats": "Statistiken"
+  },
+  "modes": {
+    "wall": "Wandmodus",
+    "wallDesc": "Spiel endet bei Kollision mit Wand",
+    "infinite": "Unendlicher Modus",
+    "infiniteDesc": "Du kannst durch Wände gehen"
+  },
+  "game": {
+    "tapToStart": "Zum Starten tippen!",
+    "back": "DopaBrain Startseite",
+    "gameOver": "Spiel vorbei"
+  },
+  "pause": {
+    "title": "Pausiert",
+    "resume": "Fortsetzen",
+    "quit": "Menü"
+  },
+  "gameover": {
+    "title": "Spiel vorbei 💥",
+    "score": "Punktzahl",
+    "best": "Beste",
+    "newRecord": "🎉 Neuer Rekord!",
+    "revive": "Anzeige ansehen und wiederbeleben",
+    "retry": "Erneut versuchen",
+    "share": "📤 Teilen",
+    "menu": "🏠 Menü"
+  },
+  "recommendations": {
+    "title": "Versuchen Sie auch diese"
+  },
+  "ranks": {
+    "beginner": "Anfänger-Schlangentrainer",
+    "apprentice": "Lehrling-Schlangentrainer",
+    "expert": "Experten-Schlangentrainer",
+    "master": "Meister-Schlangentrainer",
+    "legend": "Legendärer Schlangenmeister",
+    "god": "Schlangenspielbott"
+  },
+  "foods": {
+    "apple": "Apfel",
+    "bonus": "Bonus",
+    "diamond": "Diamant"
+  }
+}

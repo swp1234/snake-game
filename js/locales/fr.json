@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "Chargement..."
+  },
+  "ad": {
+    "placeholder": "Zone publicitaire",
+    "placeholder_interstitial": "Zone publicitaire (plein écran)",
+    "label": "Annonce",
+    "countdown": "secondes avant la fermeture",
+    "close": "✕ Fermer"
+  },
+  "menu": {
+    "subtitle": "Jeu de Serpent Classique",
+    "highScore": "Meilleur Score",
+    "startGame": "Commencer le jeu",
+    "modes": "🎮 Modes de jeu",
+    "stats": "📊 Statistiques",
+    "hint": "Utilisez les flèches/WASD ou balayez pour contrôler",
+    "home": "Accueil DopaBrain"
+  },
+  "screens": {
+    "back": "← Retour",
+    "modes": "Modes de jeu",
+    "stats": "Statistiques"
+  },
+  "modes": {
+    "wall": "Mode mur",
+    "wallDesc": "Fin du jeu si vous frappez le mur",
+    "infinite": "Mode infini",
+    "infiniteDesc": "Vous pouvez passer à travers les murs"
+  },
+  "game": {
+    "tapToStart": "Appuyez pour commencer!",
+    "back": "Accueil DopaBrain",
+    "gameOver": "Fin du jeu"
+  },
+  "pause": {
+    "title": "Pause",
+    "resume": "Reprendre",
+    "quit": "Menu"
+  },
+  "gameover": {
+    "title": "Fin du jeu 💥",
+    "score": "Score",
+    "best": "Meilleur",
+    "newRecord": "🎉 Nouveau record!",
+    "revive": "Regardez une annonce et revitalisez",
+    "retry": "Réessayer",
+    "share": "📤 Partager",
+    "menu": "🏠 Menu"
+  },
+  "recommendations": {
+    "title": "Essayez-le aussi"
+  },
+  "ranks": {
+    "beginner": "Entraîneur de serpent débutant",
+    "apprentice": "Apprenti entraîneur de serpent",
+    "expert": "Entraîneur de serpent expert",
+    "master": "Maître entraîneur de serpent",
+    "legend": "Maître serpent légendaire",
+    "god": "Dieu du jeu des serpents"
+  },
+  "foods": {
+    "apple": "Pomme",
+    "bonus": "Bonus",
+    "diamond": "Diamant"
+  }
+}

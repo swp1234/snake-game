@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "Cargando..."
+  },
+  "ad": {
+    "placeholder": "Área de anuncio",
+    "placeholder_interstitial": "Área de anuncio (pantalla completa)",
+    "label": "Anuncio",
+    "countdown": "segundos para cerrar",
+    "close": "✕ Cerrar"
+  },
+  "menu": {
+    "subtitle": "Juego Clásico de la Serpiente",
+    "highScore": "Puntuación más alta",
+    "startGame": "Comenzar juego",
+    "modes": "🎮 Modos de juego",
+    "stats": "📊 Estadísticas",
+    "hint": "Usa flechas/WASD o desliza para controlar",
+    "home": "Inicio de DopaBrain"
+  },
+  "screens": {
+    "back": "← Atrás",
+    "modes": "Modos de juego",
+    "stats": "Estadísticas"
+  },
+  "modes": {
+    "wall": "Modo de pared",
+    "wallDesc": "Fin del juego si chocas con la pared",
+    "infinite": "Modo infinito",
+    "infiniteDesc": "Puedes pasar a través de las paredes"
+  },
+  "game": {
+    "tapToStart": "¡Toca para comenzar!",
+    "back": "Inicio de DopaBrain",
+    "gameOver": "Fin del juego"
+  },
+  "pause": {
+    "title": "Pausa",
+    "resume": "Reanudar",
+    "quit": "Menú"
+  },
+  "gameover": {
+    "title": "Fin del juego 💥",
+    "score": "Puntuación",
+    "best": "Mejor",
+    "newRecord": "🎉 ¡Nuevo récord!",
+    "revive": "Ver anuncio y revivir",
+    "retry": "Intentar de nuevo",
+    "share": "📤 Compartir",
+    "menu": "🏠 Menú"
+  },
+  "recommendations": {
+    "title": "Intenta estas también"
+  },
+  "ranks": {
+    "beginner": "Principiante Entrenador de Serpientes",
+    "apprentice": "Aprendiz Entrenador de Serpientes",
+    "expert": "Experto Entrenador de Serpientes",
+    "master": "Maestro Entrenador de Serpientes",
+    "legend": "Legendario Maestro de Serpientes",
+    "god": "Dios del Juego de Serpientes"
+  },
+  "foods": {
+    "apple": "Manzana",
+    "bonus": "Bonificación",
+    "diamond": "Diamante"
+  }
+}

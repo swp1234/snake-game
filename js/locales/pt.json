@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "Carregando..."
+  },
+  "ad": {
+    "placeholder": "Área de anúncio",
+    "placeholder_interstitial": "Área de anúncio (tela cheia)",
+    "label": "Anúncio",
+    "countdown": "segundos até fechar",
+    "close": "✕ Fechar"
+  },
+  "menu": {
+    "subtitle": "Jogo Clássico da Cobra",
+    "highScore": "Pontuação mais alta",
+    "startGame": "Começar jogo",
+    "modes": "🎮 Modos de jogo",
+    "stats": "📊 Estatísticas",
+    "hint": "Use setas/WASD ou deslize para controlar",
+    "home": "Início do DopaBrain"
+  },
+  "screens": {
+    "back": "← Voltar",
+    "modes": "Modos de jogo",
+    "stats": "Estatísticas"
+  },
+  "modes": {
+    "wall": "Modo de parede",
+    "wallDesc": "Fim do jogo se você bater na parede",
+    "infinite": "Modo infinito",
+    "infiniteDesc": "Você pode passar pelas paredes"
+  },
+  "game": {
+    "tapToStart": "Toque para começar!",
+    "back": "Início do DopaBrain",
+    "gameOver": "Fim do jogo"
+  },
+  "pause": {
+    "title": "Pausa",
+    "resume": "Retomar",
+    "quit": "Menu"
+  },
+  "gameover": {
+    "title": "Fim do jogo 💥",
+    "score": "Pontuação",
+    "best": "Melhor",
+    "newRecord": "🎉 Novo recorde!",
+    "revive": "Veja anúncio e reviva",
+    "retry": "Tentar novamente",
+    "share": "📤 Compartilhar",
+    "menu": "🏠 Menu"
+  },
+  "recommendations": {
+    "title": "Tente estes também"
+  },
+  "ranks": {
+    "beginner": "Treinador iniciante de cobra",
+    "apprentice": "Treinador aprendiz de cobra",
+    "expert": "Treinador especialista em cobras",
+    "master": "Mestre treinador de cobra",
+    "legend": "Mestre legendário de cobras",
+    "god": "Deus do jogo da cobra"
+  },
+  "foods": {
+    "apple": "Maçã",
+    "bonus": "Bônus",
+    "diamond": "Diamante"
+  }
+}

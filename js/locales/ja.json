@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "読み込み中..."
+  },
+  "ad": {
+    "placeholder": "広告エリア",
+    "placeholder_interstitial": "広告エリア（全画面）",
+    "label": "広告",
+    "countdown": "秒で閉じる",
+    "close": "✕ 閉じる"
+  },
+  "menu": {
+    "subtitle": "クラシックスネークゲーム",
+    "highScore": "ハイスコア",
+    "startGame": "ゲーム開始",
+    "modes": "🎮 ゲームモード",
+    "stats": "📊 統計",
+    "hint": "矢印キー/WASDまたはスワイプで操作してください",
+    "home": "DopaBrain ホーム"
+  },
+  "screens": {
+    "back": "← 戻る",
+    "modes": "ゲームモード",
+    "stats": "統計"
+  },
+  "modes": {
+    "wall": "壁モード",
+    "wallDesc": "壁に衝突するとゲームオーバー",
+    "infinite": "無限モード",
+    "infiniteDesc": "壁を通り抜けることができます"
+  },
+  "game": {
+    "tapToStart": "タップして開始！",
+    "back": "DopaBrain ホーム",
+    "gameOver": "ゲームオーバー"
+  },
+  "pause": {
+    "title": "一時停止",
+    "resume": "再開",
+    "quit": "メニュー"
+  },
+  "gameover": {
+    "title": "ゲームオーバー 💥",
+    "score": "スコア",
+    "best": "ベスト",
+    "newRecord": "🎉 新記録！",
+    "revive": "広告を見て復活する",
+    "retry": "もう一度",
+    "share": "📤 シェア",
+    "menu": "🏠 メニュー"
+  },
+  "recommendations": {
+    "title": "これも試してみてください"
+  },
+  "ranks": {
+    "beginner": "初心者ヘビトレーナー",
+    "apprentice": "見習いヘビトレーナー",
+    "expert": "エキスパートヘビトレーナー",
+    "master": "マスターヘビトレーナー",
+    "legend": "伝説のヘビマスター",
+    "god": "ヘビゲームの神"
+  },
+  "foods": {
+    "apple": "りんご",
+    "bonus": "ボーナス",
+    "diamond": "ダイヤモンド"
+  }
+}

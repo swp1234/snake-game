@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "Memuat..."
+  },
+  "ad": {
+    "placeholder": "Area iklan",
+    "placeholder_interstitial": "Area iklan (layar penuh)",
+    "label": "Iklan",
+    "countdown": "detik untuk ditutup",
+    "close": "✕ Tutup"
+  },
+  "menu": {
+    "subtitle": "Permainan Ular Klasik",
+    "highScore": "Skor Tertinggi",
+    "startGame": "Mulai Permainan",
+    "modes": "🎮 Mode Permainan",
+    "stats": "📊 Statistik",
+    "hint": "Gunakan tombol panah/WASD atau geser untuk mengontrol",
+    "home": "Beranda DopaBrain"
+  },
+  "screens": {
+    "back": "← Kembali",
+    "modes": "Mode Permainan",
+    "stats": "Statistik"
+  },
+  "modes": {
+    "wall": "Mode Dinding",
+    "wallDesc": "Permainan berakhir jika Anda menabrak dinding",
+    "infinite": "Mode Tak Terbatas",
+    "infiniteDesc": "Anda dapat melewati dinding"
+  },
+  "game": {
+    "tapToStart": "Ketuk untuk memulai!",
+    "back": "Beranda DopaBrain",
+    "gameOver": "Permainan Berakhir"
+  },
+  "pause": {
+    "title": "Jeda",
+    "resume": "Lanjutkan",
+    "quit": "Menu"
+  },
+  "gameover": {
+    "title": "Permainan Berakhir 💥",
+    "score": "Skor",
+    "best": "Terbaik",
+    "newRecord": "🎉 Rekor Baru!",
+    "revive": "Tonton iklan & hidup kembali",
+    "retry": "Coba Lagi",
+    "share": "📤 Bagikan",
+    "menu": "🏠 Menu"
+  },
+  "recommendations": {
+    "title": "Coba Juga Ini"
+  },
+  "ranks": {
+    "beginner": "Pemula Pelatih Ular",
+    "apprentice": "Magang Pelatih Ular",
+    "expert": "Ahli Pelatih Ular",
+    "master": "Master Pelatih Ular",
+    "legend": "Master Ular Legendaris",
+    "god": "Dewa Permainan Ular"
+  },
+  "foods": {
+    "apple": "Apel",
+    "bonus": "Bonus",
+    "diamond": "Berlian"
+  }
+}

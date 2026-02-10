@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "Loading..."
+  },
+  "ad": {
+    "placeholder": "Advertisement",
+    "placeholder_interstitial": "Advertisement Area",
+    "label": "Ad",
+    "countdown": "seconds until close",
+    "close": "✕ Close"
+  },
+  "menu": {
+    "subtitle": "Classic Snake Game",
+    "highScore": "High Score",
+    "startGame": "Start Game",
+    "modes": "🎮 Game Modes",
+    "stats": "📊 Statistics",
+    "hint": "Use arrow keys/WASD or swipe to control",
+    "home": "DopaBrain Home"
+  },
+  "screens": {
+    "back": "← Back",
+    "modes": "Game Modes",
+    "stats": "Statistics"
+  },
+  "modes": {
+    "wall": "Wall Mode",
+    "wallDesc": "Game Over if you hit the wall",
+    "infinite": "Infinite Mode",
+    "infiniteDesc": "You can pass through walls"
+  },
+  "game": {
+    "tapToStart": "Tap to Start!",
+    "back": "DopaBrain Home",
+    "gameOver": "Game Over"
+  },
+  "pause": {
+    "title": "Paused",
+    "resume": "Resume",
+    "quit": "Menu"
+  },
+  "gameover": {
+    "title": "Game Over 💥",
+    "score": "Score",
+    "best": "Best",
+    "newRecord": "🎉 New Record!",
+    "revive": "Watch Ad & Revive",
+    "retry": "Try Again",
+    "share": "📤 Share",
+    "menu": "🏠 Menu"
+  },
+  "recommendations": {
+    "title": "Try These Too"
+  },
+  "ranks": {
+    "beginner": "Beginner Snake Trainer",
+    "apprentice": "Apprentice Snake Trainer",
+    "expert": "Expert Snake Trainer",
+    "master": "Master Snake Trainer",
+    "legend": "Legend Snake Master",
+    "god": "Snake Game God"
+  },
+  "foods": {
+    "apple": "Apple",
+    "bonus": "Bonus",
+    "diamond": "Diamond"
+  }
+}

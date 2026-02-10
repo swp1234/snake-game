@@ -1,0 +1,68 @@
+{
+  "app": {
+    "loading": "Yükleniyor..."
+  },
+  "ad": {
+    "placeholder": "Reklam alanı",
+    "placeholder_interstitial": "Reklam alanı (tam ekran)",
+    "label": "Reklam",
+    "countdown": "saniye sonra kapat",
+    "close": "✕ Kapat"
+  },
+  "menu": {
+    "subtitle": "Klasik Yılan Oyunu",
+    "highScore": "En Yüksek Skor",
+    "startGame": "Oyunu Başlat",
+    "modes": "🎮 Oyun Modları",
+    "stats": "📊 İstatistikler",
+    "hint": "Kontrol için ok tuşları/WASD veya kaydırın",
+    "home": "DopaBrain Ana Sayfa"
+  },
+  "screens": {
+    "back": "← Geri",
+    "modes": "Oyun Modları",
+    "stats": "İstatistikler"
+  },
+  "modes": {
+    "wall": "Duvar Modu",
+    "wallDesc": "Duvarla çarparsanız oyun biter",
+    "infinite": "Sonsuz Mod",
+    "infiniteDesc": "Duvarların içinden geçebilirsiniz"
+  },
+  "game": {
+    "tapToStart": "Başlamak için dokunun!",
+    "back": "DopaBrain Ana Sayfa",
+    "gameOver": "Oyun Bitti"
+  },
+  "pause": {
+    "title": "Duraklatılmış",
+    "resume": "Devam Et",
+    "quit": "Menu"
+  },
+  "gameover": {
+    "title": "Oyun Bitti 💥",
+    "score": "Skor",
+    "best": "En İyi",
+    "newRecord": "🎉 Yeni Rekor!",
+    "revive": "Reklam izle ve canlan",
+    "retry": "Tekrar Dene",
+    "share": "📤 Paylaş",
+    "menu": "🏠 Menu"
+  },
+  "recommendations": {
+    "title": "Bunu da Dene"
+  },
+  "ranks": {
+    "beginner": "Başlangıç Yılan Antrenörü",
+    "apprentice": "Çırak Yılan Antrenörü",
+    "expert": "Uzman Yılan Antrenörü",
+    "master": "Ustam Yılan Antrenörü",
+    "legend": "Efsane Yılan Ustası",
+    "god": "Yılan Oyunu Tanrısı"
+  },
+  "foods": {
+    "apple": "Elma",
+    "bonus": "Bonus",
+    "diamond": "Elmas"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Snake Classic - 뱀 게임",
+  "short_name": "Snake Classic",
+  "description": "클래식 뱀 게임의 현대적 리메이크. 네온 스타일, 모바일 스와이프, 다양한 먹이 종류.",
+  "start_url": "/snake-game/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/snake-game/",
+  "background_color": "#0f0f23",
+  "theme_color": "#2ecc71",
+  "categories": [
+    "games"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icon-512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Play Wall Mode",
+      "short_name": "Wall Mode",
+      "description": "Play Snake game in Wall Mode",
+      "url": "/snake-game/?mode=wall",
+      "icons": [
+        {
+          "src": "icon-192.svg",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Play Infinite Mode",
+      "short_name": "Infinite Mode",
+      "description": "Play Snake game in Infinite Mode",
+      "url": "/snake-game/?mode=infinite",
+      "icons": [
+        {
+          "src": "icon-192.svg",
+          "sizes": "192x192",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/snake-game/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "screenshot",
+          "accept": [
+            "image/*"
+          ]
+        }
+      ]
+    }
+  }
+}
