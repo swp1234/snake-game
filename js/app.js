@@ -113,6 +113,9 @@ class SnakeGame {
         this.btnMenu.addEventListener('click', () => this.showMenu());
         this.btnStatsBack.addEventListener('click', () => this.showMenu());
 
+        // Direction control buttons (mouse/touch buttons)
+        this.setupDirectionButtons();
+
         // Keyboard controls
         document.addEventListener('keydown', (e) => this.handleKeydown(e));
 
@@ -151,13 +154,52 @@ class SnakeGame {
             }
         });
 
-        // Canvas click to start
+        // Canvas click to start (improved - also works for continuing paused game)
         this.canvas.addEventListener('click', () => {
             if (!this.gameRunning && this.gameState === 'playing') {
                 this.gameRunning = true;
                 this.tapHint.style.display = 'none';
             }
         });
+    }
+
+    setupDirectionButtons() {
+        const dirUp = document.getElementById('dir-up');
+        const dirDown = document.getElementById('dir-down');
+        const dirLeft = document.getElementById('dir-left');
+        const dirRight = document.getElementById('dir-right');
+
+        if (dirUp) {
+            dirUp.addEventListener('click', () => {
+                if (this.gameRunning && !this.gamePaused && this.direction.y === 0) {
+                    this.nextDirection = { x: 0, y: -1 };
+                }
+            });
+        }
+
+        if (dirDown) {
+            dirDown.addEventListener('click', () => {
+                if (this.gameRunning && !this.gamePaused && this.direction.y === 0) {
+                    this.nextDirection = { x: 0, y: 1 };
+                }
+            });
+        }
+
+        if (dirLeft) {
+            dirLeft.addEventListener('click', () => {
+                if (this.gameRunning && !this.gamePaused && this.direction.x === 0) {
+                    this.nextDirection = { x: -1, y: 0 };
+                }
+            });
+        }
+
+        if (dirRight) {
+            dirRight.addEventListener('click', () => {
+                if (this.gameRunning && !this.gamePaused && this.direction.x === 0) {
+                    this.nextDirection = { x: 1, y: 0 };
+                }
+            });
+        }
     }
 
     handleKeydown(e) {

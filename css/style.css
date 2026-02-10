@@ -553,6 +553,7 @@ body {
     width: 100%;
     flex: 1;
     background: var(--bg);
+    cursor: pointer;
 }
 
 .tap-hint {
@@ -569,6 +570,66 @@ body {
 @keyframes pulse {
     0%, 100% { opacity: 0.6; }
     50% { opacity: 1; }
+}
+
+/* === Direction Controls === */
+.direction-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    z-index: 100;
+}
+
+.dir-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(46, 204, 113, 0.2);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid rgba(46, 204, 113, 0.4);
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.dir-btn:hover {
+    background: rgba(46, 204, 113, 0.35);
+    border-color: rgba(46, 204, 113, 0.6);
+}
+
+.dir-btn:active {
+    transform: scale(0.92);
+    background: rgba(46, 204, 113, 0.5);
+}
+
+.dir-horizontal {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.dir-left {
+    width: 48px;
+}
+
+.dir-down {
+    width: 48px;
+}
+
+.dir-right {
+    width: 48px;
 }
 
 /* === Overlays === */
