@@ -787,15 +787,17 @@ class SnakeGame {
 
 // Initialize game when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
-    // Wait for i18n to load
-    await new Promise(resolve => {
-        const checkI18n = setInterval(() => {
-            if (window.i18n && window.i18n.translations[window.i18n.currentLang]) {
-                clearInterval(checkI18n);
-                resolve();
-            }
-        }, 100);
-    });
+    // Initialize i18n safely
+    try {
+        if (window.i18n && window.i18n.init) {
+            await window.i18n.init();
+        } else if (window.i18n && window.i18n.loadTranslations) {
+            await window.i18n.loadTranslations(window.i18n.currentLang || 'en');
+            if (window.i18n.updateUI) window.i18n.updateUI();
+        }
+    } catch (e) {
+        console.warn('i18n initialization failed, continuing:', e);
+    }
 
     // Start game
     window.game = new SnakeGame();
