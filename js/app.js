@@ -154,8 +154,16 @@ class SnakeGame {
             }
         });
 
-        // Canvas click to start (improved - also works for continuing paused game)
+        // Canvas click/tap to start (improved - works for click, tap, and touch)
         this.canvas.addEventListener('click', () => {
+            if (!this.gameRunning && this.gameState === 'playing') {
+                this.gameRunning = true;
+                this.tapHint.style.display = 'none';
+            }
+        });
+
+        // Canvas touch end for mobile tap
+        this.canvas.addEventListener('touchend', () => {
             if (!this.gameRunning && this.gameState === 'playing') {
                 this.gameRunning = true;
                 this.tapHint.style.display = 'none';
