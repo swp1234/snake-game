@@ -311,6 +311,9 @@ class SnakeGame {
         // Update HUD
         this.hudMode.textContent = mode === 'wall' ? 'WALL MODE' : 'INFINITE MODE';
 
+        // Resize canvas now that game screen is visible
+        this.resizeCanvas();
+
         // Initialize game
         this.reset();
         this.gameRunning = false;
@@ -344,6 +347,8 @@ class SnakeGame {
     }
 
     spawnFood() {
+        if (this.cols <= 0 || this.rows <= 0) return;
+
         let x, y, type;
         let valid = false;
 
