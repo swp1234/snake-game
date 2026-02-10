@@ -49,6 +49,17 @@
     "share": "📤 Поделиться",
     "menu": "🏠 Меню"
   },
+  "stats_detail": {
+    "highScore": "Рекорд",
+    "gamesPlayed": "Игр сыграно",
+    "foodEaten": "Съедено еды",
+    "survivalTime": "Общее время",
+    "minuteUnit": "мин"
+  },
+  "share_msg": {
+    "text": "{score} очков в Змейке! {icon} {title} 🐍\nИграй: dopabrain.com/snake-game/",
+    "alert": "Поделиться: {url}"
+  },
   "recommendations": {
     "title": "Попробуйте и это"
   },

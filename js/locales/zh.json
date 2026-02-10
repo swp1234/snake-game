@@ -49,6 +49,17 @@
     "share": "📤 分享",
     "menu": "🏠 菜单"
   },
+  "stats_detail": {
+    "highScore": "最高分",
+    "gamesPlayed": "游戏次数",
+    "foodEaten": "吃掉食物",
+    "survivalTime": "总生存时间",
+    "minuteUnit": "分钟"
+  },
+  "share_msg": {
+    "text": "贪吃蛇得了{score}分！{icon} {title} 🐍\n来玩：dopabrain.com/snake-game/",
+    "alert": "分享：{url}"
+  },
   "recommendations": {
     "title": "也试试这些"
   },

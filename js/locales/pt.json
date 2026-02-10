@@ -49,6 +49,17 @@
     "share": "📤 Compartilhar",
     "menu": "🏠 Menu"
   },
+  "stats_detail": {
+    "highScore": "Recorde",
+    "gamesPlayed": "Jogos jogados",
+    "foodEaten": "Comida comida",
+    "survivalTime": "Tempo total",
+    "minuteUnit": "min"
+  },
+  "share_msg": {
+    "text": "{score} pontos no Snake! {icon} {title} 🐍\nJogue: dopabrain.com/snake-game/",
+    "alert": "Compartilhar: {url}"
+  },
   "recommendations": {
     "title": "Tente estes também"
   },

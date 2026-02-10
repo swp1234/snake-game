@@ -49,6 +49,17 @@
     "share": "📤 Paylaş",
     "menu": "🏠 Menu"
   },
+  "stats_detail": {
+    "highScore": "En Yüksek Skor",
+    "gamesPlayed": "Oynanan Oyun",
+    "foodEaten": "Yenen Yiyecek",
+    "survivalTime": "Toplam Süre",
+    "minuteUnit": "dk"
+  },
+  "share_msg": {
+    "text": "Yılan'da {score} puan! {icon} {title} 🐍\nOyna: dopabrain.com/snake-game/",
+    "alert": "Paylaş: {url}"
+  },
   "recommendations": {
     "title": "Bunu da Dene"
   },

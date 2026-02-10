@@ -49,6 +49,17 @@
     "share": "📤 Bagikan",
     "menu": "🏠 Menu"
   },
+  "stats_detail": {
+    "highScore": "Skor Tertinggi",
+    "gamesPlayed": "Game Dimainkan",
+    "foodEaten": "Makanan Dimakan",
+    "survivalTime": "Total Bertahan",
+    "minuteUnit": "menit"
+  },
+  "share_msg": {
+    "text": "Skor {score} di Snake! {icon} {title} 🐍\nMain: dopabrain.com/snake-game/",
+    "alert": "Bagikan: {url}"
+  },
   "recommendations": {
     "title": "Coba Juga Ini"
   },

@@ -49,6 +49,17 @@
     "share": "📤 Share",
     "menu": "🏠 Menu"
   },
+  "stats_detail": {
+    "highScore": "High Score",
+    "gamesPlayed": "Games Played",
+    "foodEaten": "Food Eaten",
+    "survivalTime": "Total Survival",
+    "minuteUnit": "min"
+  },
+  "share_msg": {
+    "text": "I scored {score} in Snake! {icon} {title} 🐍\nPlay: dopabrain.com/snake-game/",
+    "alert": "Share: {url}"
+  },
   "recommendations": {
     "title": "Try These Too"
   },

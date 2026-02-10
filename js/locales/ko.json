@@ -49,6 +49,17 @@
     "share": "📤 공유",
     "menu": "🏠 메뉴"
   },
+  "stats_detail": {
+    "highScore": "최고 점수",
+    "gamesPlayed": "게임 플레이",
+    "foodEaten": "먹이 먹음",
+    "survivalTime": "총 생존시간",
+    "minuteUnit": "분"
+  },
+  "share_msg": {
+    "text": "뱀 게임에서 {score}점! {icon} {title} 🐍\n플레이: dopabrain.com/snake-game/",
+    "alert": "공유하기: {url}"
+  },
   "recommendations": {
     "title": "이것도 해보세요"
   },

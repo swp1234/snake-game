@@ -49,6 +49,17 @@
     "share": "📤 シェア",
     "menu": "🏠 メニュー"
   },
+  "stats_detail": {
+    "highScore": "ハイスコア",
+    "gamesPlayed": "プレイ回数",
+    "foodEaten": "食べた数",
+    "survivalTime": "合計生存時間",
+    "minuteUnit": "分"
+  },
+  "share_msg": {
+    "text": "スネークで{score}点！{icon} {title} 🐍\nプレイ：dopabrain.com/snake-game/",
+    "alert": "シェア：{url}"
+  },
   "recommendations": {
     "title": "これも試してみてください"
   },
