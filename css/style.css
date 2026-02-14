@@ -3,6 +3,10 @@
    Neon Theme | Dark Mode | Glassmorphism
    ============================================ */
 
+/* Skip Link */
+.skip-link { position:absolute; top:-40px; left:0; background:var(--primary, #2ecc71); color:#fff; padding:8px 16px; z-index:10001; transition:top 0.3s; font-size:14px; text-decoration:none; }
+.skip-link:focus { top:0; }
+
 :root {
     --primary: #2ecc71;
     --primary-light: #3bd882;
@@ -1297,4 +1301,13 @@ input:focus-visible,
 
 .theme-toggle:active {
     transform: scale(0.95);
+}
+
+/* Accessibility: reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
