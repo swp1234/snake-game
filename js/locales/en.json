@@ -1,6 +1,7 @@
 {
   "app": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "skipLink": "Skip to content"
   },
   "ad": {
     "placeholder": "Advertisement",
@@ -33,6 +34,10 @@
     "tapToStart": "Tap to Start!",
     "back": "DopaBrain Home",
     "gameOver": "Game Over"
+  },
+  "hud": {
+    "wallMode": "Wall Mode",
+    "infiniteMode": "Infinite Mode"
   },
   "pause": {
     "title": "Paused",

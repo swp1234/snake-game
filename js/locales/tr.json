@@ -1,6 +1,7 @@
 {
   "app": {
-    "loading": "Yükleniyor..."
+    "loading": "Yükleniyor...",
+    "skipLink": "İçeriğe geç"
   },
   "ad": {
     "placeholder": "Reklam alanı",
@@ -33,6 +34,10 @@
     "tapToStart": "Başlamak için dokunun!",
     "back": "DopaBrain Ana Sayfa",
     "gameOver": "Oyun Bitti"
+  },
+  "hud": {
+    "wallMode": "Duvar Modu",
+    "infiniteMode": "Sonsuz Mod"
   },
   "pause": {
     "title": "Duraklatılmış",

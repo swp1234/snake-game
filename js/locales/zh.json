@@ -1,6 +1,7 @@
 {
   "app": {
-    "loading": "加载中..."
+    "loading": "加载中...",
+    "skipLink": "跳到内容"
   },
   "ad": {
     "placeholder": "广告区域",
@@ -33,6 +34,10 @@
     "tapToStart": "点击开始！",
     "back": "DopaBrain 主页",
     "gameOver": "游戏结束"
+  },
+  "hud": {
+    "wallMode": "墙壁模式",
+    "infiniteMode": "无限模式"
   },
   "pause": {
     "title": "暂停",

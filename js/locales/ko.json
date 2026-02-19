@@ -1,6 +1,7 @@
 {
   "app": {
-    "loading": "로딩 중..."
+    "loading": "로딩 중...",
+    "skipLink": "본문으로 이동"
   },
   "ad": {
     "placeholder": "광고 영역",
@@ -33,6 +34,10 @@
     "tapToStart": "탭하여 시작!",
     "back": "DopaBrain 홈",
     "gameOver": "게임 오버"
+  },
+  "hud": {
+    "wallMode": "벽 모드",
+    "infiniteMode": "무한 모드"
   },
   "pause": {
     "title": "일시정지",

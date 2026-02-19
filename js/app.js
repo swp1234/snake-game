@@ -309,7 +309,7 @@ class SnakeGame {
         this.gameoverScreen.classList.add('hidden');
 
         // Update HUD
-        this.hudMode.textContent = mode === 'wall' ? 'WALL MODE' : 'INFINITE MODE';
+        this.hudMode.textContent = mode === 'wall' ? (window.i18n.t('hud.wallMode') || 'WALL MODE') : (window.i18n.t('hud.infiniteMode') || 'INFINITE MODE');
 
         // Resize canvas now that game screen is visible
         this.resizeCanvas();

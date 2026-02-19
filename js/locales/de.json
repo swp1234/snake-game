@@ -1,6 +1,7 @@
 {
   "app": {
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "skipLink": "Zum Inhalt"
   },
   "ad": {
     "placeholder": "Anzeigenbereich",
@@ -33,6 +34,10 @@
     "tapToStart": "Zum Starten tippen!",
     "back": "DopaBrain Startseite",
     "gameOver": "Spiel vorbei"
+  },
+  "hud": {
+    "wallMode": "Wandmodus",
+    "infiniteMode": "Unendlichmodus"
   },
   "pause": {
     "title": "Pausiert",

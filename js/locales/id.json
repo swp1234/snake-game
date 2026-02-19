@@ -1,6 +1,7 @@
 {
   "app": {
-    "loading": "Memuat..."
+    "loading": "Memuat...",
+    "skipLink": "Lewati ke konten"
   },
   "ad": {
     "placeholder": "Area iklan",
@@ -33,6 +34,10 @@
     "tapToStart": "Ketuk untuk memulai!",
     "back": "Beranda DopaBrain",
     "gameOver": "Permainan Berakhir"
+  },
+  "hud": {
+    "wallMode": "Mode Dinding",
+    "infiniteMode": "Mode Tak Terbatas"
   },
   "pause": {
     "title": "Jeda",

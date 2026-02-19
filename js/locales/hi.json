@@ -1,6 +1,7 @@
 {
   "app": {
-    "loading": "लोड हो रहा है..."
+    "loading": "लोड हो रहा है...",
+    "skipLink": "सामग्री पर जाएं"
   },
   "ad": {
     "placeholder": "विज्ञापन क्षेत्र",
@@ -33,6 +34,10 @@
     "tapToStart": "शुरू करने के लिए टैप करें!",
     "back": "DopaBrain होम",
     "gameOver": "गेम ओवर"
+  },
+  "hud": {
+    "wallMode": "वॉल मोड",
+    "infiniteMode": "अनंत मोड"
   },
   "pause": {
     "title": "रुका हुआ",
