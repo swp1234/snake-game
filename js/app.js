@@ -553,6 +553,9 @@ class SnakeGame {
             foodCount: this.stats.foodEaten
         });
 
+        // Report score to daily streak system
+        if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
+
         // Check for new record
         const isNewRecord = leaderboardResult.isNewRecord;
         if (isNewRecord) {
@@ -806,6 +809,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Start game
     window.game = new SnakeGame();
+
+    if (typeof DailyStreak !== 'undefined') {
+      DailyStreak.init({ gameId: 'snake-game', bestScoreKey: 'snake_highscore', minTarget: 3 });
+    }
 });
 
 // Add displayLeaderboard method to SnakeGame prototype
