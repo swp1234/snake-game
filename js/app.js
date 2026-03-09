@@ -558,6 +558,15 @@ class SnakeGame {
         // Report score to daily streak system
         if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
 
+        // Report achievements
+        if (typeof GameAchievements !== 'undefined') {
+            GameAchievements.report({
+                bestScore: this.highScore,
+                gamesPlayed: this.stats.gamesPlayed,
+                foodEaten: this.stats.foodEaten
+            });
+        }
+
         // Check for new record
         const isNewRecord = leaderboardResult.isNewRecord;
         if (isNewRecord) {
@@ -814,6 +823,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (typeof DailyStreak !== 'undefined') {
       DailyStreak.init({ gameId: 'snake-game', bestScoreKey: 'snake_highscore', minTarget: 3 });
+    }
+
+    if (typeof GameAchievements !== 'undefined') {
+      GameAchievements.init({
+        gameId: 'snake-game',
+        defs: [
+          { id: 'score_10', stat: 'bestScore', target: 10, icon: '\uD83D\uDC0D', name: 'Snake Starter' },
+          { id: 'score_50', stat: 'bestScore', target: 50, icon: '\uD83D\uDC0D', name: 'Snake Master' },
+          { id: 'score_100', stat: 'bestScore', target: 100, icon: '\uD83D\uDC0D', name: 'Snake Legend' },
+          { id: 'games_10', stat: 'gamesPlayed', target: 10, icon: '\uD83C\uDFAE', name: 'Regular Player' },
+          { id: 'games_50', stat: 'gamesPlayed', target: 50, icon: '\uD83C\uDFAE', name: 'Dedicated' },
+          { id: 'food_100', stat: 'foodEaten', target: 100, icon: '\uD83C\uDF4E', name: 'Hungry Snake' },
+          { id: 'food_500', stat: 'foodEaten', target: 500, icon: '\uD83C\uDF4E', name: 'Feast Master' },
+        ]
+      });
     }
 });
 
