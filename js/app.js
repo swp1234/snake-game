@@ -621,17 +621,14 @@ class SnakeGame {
     }
 
     showReviveAd() {
-        this.interstitialOverlay.classList.remove('hidden');
-        let countdown = 5;
-
-        const adCountdown = setInterval(() => {
-            document.getElementById('ad-countdown').textContent = countdown;
-            if (countdown === 0) {
-                clearInterval(adCountdown);
-                this.reviveGame();
-            }
-            countdown--;
-        }, 1000);
+        if (typeof GameAds !== 'undefined') {
+            GameAds.showRewarded({
+                onReward: () => this.reviveGame(),
+                onSkip: () => {}
+            });
+        } else {
+            this.reviveGame(); // fallback
+        }
     }
 
     reviveGame() {
