@@ -435,6 +435,7 @@ class SnakeGame {
                     }
 
                     this.score += points;
+                    if (typeof Haptic !== 'undefined') Haptic.light();
                     this.stats.foodEaten++;
                     this.hudScore.textContent = this.score;
 
@@ -532,6 +533,7 @@ class SnakeGame {
     }
 
     endGame() {
+        if (typeof Haptic !== 'undefined') Haptic.heavy();
         this.gameRunning = false;
         this.gameState = 'gameOver';
         const survivalSeconds = Math.floor((Date.now() - this.startTime) / 1000);
