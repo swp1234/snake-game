@@ -590,8 +590,16 @@ class SnakeGame {
         // Display leaderboard
         this.displayLeaderboard(leaderboardResult);
 
-        this.gameScreen.classList.add('hidden');
-        this.gameoverScreen.classList.remove('hidden');
+        const showGameOver = () => {
+            this.gameScreen.classList.add('hidden');
+            this.gameoverScreen.classList.remove('hidden');
+        };
+
+        if (typeof GameAds !== 'undefined') {
+            GameAds.showInterstitial({ onComplete: () => showGameOver() });
+        } else {
+            showGameOver();
+        }
     }
 
     getRank(score) {
@@ -820,6 +828,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Start game
     window.game = new SnakeGame();
+
+    if (typeof GameAds !== 'undefined') GameAds.init();
 
     if (typeof DailyStreak !== 'undefined') {
       DailyStreak.init({ gameId: 'snake-game', bestScoreKey: 'snake_highscore', minTarget: 3 });
