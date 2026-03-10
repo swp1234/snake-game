@@ -338,6 +338,31 @@ class SnakeGame {
         window.addEventListener('resize', () => this.resizeCanvas());
     }
 
+    showFloatingScore(gridX, gridY, points) {
+        const el = document.createElement('div');
+        el.textContent = `+${points}`;
+        const screenX = gridX * this.gridSize + this.gridSize / 2;
+        const screenY = gridY * this.gridSize;
+        const rect = this.canvas.getBoundingClientRect();
+        el.style.cssText = `position:fixed;left:${rect.left + screenX}px;top:${rect.top + screenY}px;font-size:${points >= 50 ? 22 : 16}px;font-weight:bold;color:${points >= 100 ? '#3498db' : points >= 50 ? '#f39c12' : '#2ecc71'};z-index:9999;pointer-events:none;text-shadow:0 0 8px currentColor;opacity:1;transition:all 0.8s ease-out;`;
+        document.body.appendChild(el);
+        requestAnimationFrame(() => {
+            el.style.top = `${rect.top + screenY - 40}px`;
+            el.style.opacity = '0';
+        });
+        setTimeout(() => el.remove(), 900);
+    }
+
+    shakeCanvas() {
+        const c = this.canvas;
+        c.style.transition = 'none';
+        c.style.transform = 'translateX(-4px)';
+        setTimeout(() => { c.style.transform = 'translateX(4px)'; }, 50);
+        setTimeout(() => { c.style.transform = 'translateX(-2px)'; }, 100);
+        setTimeout(() => { c.style.transform = 'translateX(2px)'; }, 150);
+        setTimeout(() => { c.style.transform = ''; }, 200);
+    }
+
     showNewBest() {
         let el = document.getElementById('new-best-flash');
         if (!el) {
@@ -469,6 +494,7 @@ class SnakeGame {
                     }
 
                     this.score += points;
+                    this.showFloatingScore(newX, newY, points);
                     if (typeof Haptic !== 'undefined') Haptic.light();
                     this.stats.foodEaten++;
                     this.hudScore.textContent = this.score;
@@ -568,6 +594,7 @@ class SnakeGame {
 
     endGame() {
         if (typeof Haptic !== 'undefined') Haptic.heavy();
+        this.shakeCanvas();
         this.gameRunning = false;
         this.gameState = 'gameOver';
         const survivalSeconds = Math.floor((Date.now() - this.startTime) / 1000);
