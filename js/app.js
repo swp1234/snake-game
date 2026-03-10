@@ -52,6 +52,11 @@ class SnakeGame {
         this.foodImgLoaded = false;
         this.foodImg.onload = () => { this.foodImgLoaded = true; };
 
+        this.bodyImg = new Image();
+        this.bodyImg.src = 'assets/body-opt.png';
+        this.bodyImgLoaded = false;
+        this.bodyImg.onload = () => { this.bodyImgLoaded = true; };
+
         this.initDOMElements();
         this.setupEventListeners();
         this.resizeCanvas();
@@ -751,11 +756,21 @@ class SnakeGame {
                 this.ctx.fillRect(x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
             } else {
                 // Body
-                const alpha = (i / this.snake.length) * 0.8;
-                this.ctx.fillStyle = `rgba(46, 204, 113, ${alpha})`;
-                this.ctx.shadowColor = 'rgba(46, 204, 113, 0.4)';
-                this.ctx.shadowBlur = 8;
-                this.ctx.fillRect(x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
+                const alpha = Math.max(0.2, 1 - (i / this.snake.length) * 0.8);
+                if (this.bodyImgLoaded) {
+                    this.ctx.globalAlpha = alpha;
+                    this.ctx.shadowColor = 'rgba(46, 204, 113, 0.4)';
+                    this.ctx.shadowBlur = 8;
+                    this.ctx.drawImage(this.bodyImg, x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
+                    this.ctx.globalAlpha = 1;
+                } else {
+                    // Fallback: gradient fillRect
+                    const fillAlpha = (i / this.snake.length) * 0.8;
+                    this.ctx.fillStyle = `rgba(46, 204, 113, ${fillAlpha})`;
+                    this.ctx.shadowColor = 'rgba(46, 204, 113, 0.4)';
+                    this.ctx.shadowBlur = 8;
+                    this.ctx.fillRect(x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
+                }
             }
         }
 

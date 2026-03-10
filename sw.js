@@ -11,6 +11,7 @@ const ASSETS_TO_CACHE = [
     '/css/style.css',
     '/assets/snake-head-opt.png',
     '/assets/food-opt.png',
+    '/assets/body-opt.png',
     '/js/app.js',
     '/js/i18n.js',
     '/js/sound-engine.js',
