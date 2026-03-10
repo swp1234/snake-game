@@ -3,12 +3,14 @@
  * Enables offline functionality and PWA features
  */
 
-const CACHE_NAME = 'snake-classic-v1';
+const CACHE_NAME = 'snake-classic-v2';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
     '/manifest.json',
     '/css/style.css',
+    '/assets/snake-head-opt.png',
+    '/assets/food-opt.png',
     '/js/app.js',
     '/js/i18n.js',
     '/js/sound-engine.js',
