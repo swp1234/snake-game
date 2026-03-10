@@ -80,5 +80,11 @@
     "apple": "Maçã",
     "bonus": "Bônus",
     "diamond": "Diamante"
+  },
+  "powerups": {
+    "slow": "Lento",
+    "ghost": "Fantasma",
+    "double": "Pontos duplos",
+    "shield": "Escudo"
   }
 }

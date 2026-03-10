@@ -80,5 +80,11 @@
     "apple": "Apfel",
     "bonus": "Bonus",
     "diamond": "Diamant"
+  },
+  "powerups": {
+    "slow": "Langsam",
+    "ghost": "Geist",
+    "double": "Doppelte Punkte",
+    "shield": "Schild"
   }
 }

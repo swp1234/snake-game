@@ -80,5 +80,11 @@
     "apple": "苹果",
     "bonus": "奖励",
     "diamond": "钻石"
+  },
+  "powerups": {
+    "slow": "减速",
+    "ghost": "幽灵",
+    "double": "双倍积分",
+    "shield": "护盾"
   }
 }

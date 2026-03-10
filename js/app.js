@@ -30,6 +30,17 @@ class SnakeGame {
         // Particles for effects
         this.particles = [];
 
+        // Power-ups
+        this.powerups = []; // items on field
+        this.activePowerups = {}; // { type: remainingMs }
+        this.hasShield = false;
+        this.POWERUP_TYPES = [
+            { type: 'slow',   icon: '\uD83D\uDC0C', color: '#3498db', duration: 5000 },
+            { type: 'ghost',  icon: '\uD83D\uDC7B', color: '#9b59b6', duration: 5000 },
+            { type: 'double', icon: '\u2728',        color: '#f1c40f', duration: 8000 },
+            { type: 'shield', icon: '\uD83D\uDEE1\uFE0F', color: '#1abc9c', duration: 0 }
+        ];
+
         // Stats
         this.stats = {
             gamesPlayed: parseInt(localStorage.getItem('snake_gamesPlayed')) || 0,
@@ -388,6 +399,9 @@ class SnakeGame {
         ];
         this.foods = [];
         this.particles = [];
+        this.powerups = [];
+        this.activePowerups = {};
+        this.hasShield = false;
         this.direction = { x: 1, y: 0 };
         this.nextDirection = { x: 1, y: 0 };
         this.currentSpeed = this.baseSpeed;
@@ -397,9 +411,8 @@ class SnakeGame {
         this.frameCount = 0;
         this.startTime = Date.now();
         this.hudScore.textContent = '0';
+        this.updatePowerupHUD();
 
-        // Improved: Spawn fewer initial foods for easier early game (1 instead of 3)
-        // This gives players more time to learn controls
         for (let i = 0; i < 1; i++) {
             this.spawnFood();
         }
@@ -437,9 +450,84 @@ class SnakeGame {
         });
     }
 
+    spawnPowerup() {
+        if (this.powerups.length > 0) return; // max 1 on field
+        if (this.cols <= 0 || this.rows <= 0) return;
+
+        const def = this.POWERUP_TYPES[Math.floor(Math.random() * this.POWERUP_TYPES.length)];
+        let x, y, valid = false;
+        while (!valid) {
+            x = Math.floor(Math.random() * this.cols);
+            y = Math.floor(Math.random() * this.rows);
+            valid = !this.snake.some(seg => seg.x === x && seg.y === y) &&
+                    !this.foods.some(f => f.x === x && f.y === y);
+        }
+        this.powerups.push({
+            x, y,
+            type: def.type,
+            icon: def.icon,
+            color: def.color,
+            duration: def.duration,
+            spawnTime: Date.now(),
+            timeout: 10000
+        });
+    }
+
+    collectPowerup(pu) {
+        window.sfx.bonus();
+        if (typeof Haptic !== 'undefined') Haptic.medium();
+        this.createParticles(pu.x, pu.y, 'bonus');
+        this.showFloatingScore(pu.x, pu.y, pu.icon);
+
+        if (pu.type === 'shield') {
+            this.hasShield = true;
+        } else {
+            this.activePowerups[pu.type] = pu.duration;
+            if (pu.type === 'slow') {
+                this.currentSpeed = Math.min(this.currentSpeed * 1.6, this.baseSpeed * 1.5);
+            }
+        }
+        this.updatePowerupHUD();
+    }
+
+    updatePowerupTimers(dt) {
+        for (const type in this.activePowerups) {
+            this.activePowerups[type] -= dt;
+            if (this.activePowerups[type] <= 0) {
+                delete this.activePowerups[type];
+                if (type === 'slow') {
+                    const snakeLength = this.snake.length;
+                    const speedReduction = Math.log(snakeLength + 1) * 6;
+                    this.currentSpeed = Math.max(70, this.baseSpeed - speedReduction);
+                }
+            }
+        }
+        // Expire field powerups
+        this.powerups = this.powerups.filter(p => Date.now() - p.spawnTime < p.timeout);
+        this.updatePowerupHUD();
+    }
+
+    updatePowerupHUD() {
+        const container = document.getElementById('powerup-hud');
+        if (!container) return;
+        let html = '';
+        if (this.hasShield) {
+            html += '<span class="pu-badge pu-shield">\uD83D\uDEE1\uFE0F</span>';
+        }
+        for (const type in this.activePowerups) {
+            const remaining = Math.ceil(this.activePowerups[type] / 1000);
+            const def = this.POWERUP_TYPES.find(d => d.type === type);
+            if (def) {
+                html += `<span class="pu-badge" style="border-color:${def.color}">${def.icon} ${remaining}s</span>`;
+            }
+        }
+        container.innerHTML = html;
+    }
+
     update(deltaTime) {
         if (!this.gameRunning || this.gamePaused) return;
 
+        this.updatePowerupTimers(deltaTime);
         this.lastMoveTime += deltaTime;
 
         // Move snake
@@ -458,14 +546,40 @@ class SnakeGame {
 
             // Check wall collision (wall mode only)
             if (this.gameMode === 'wall' && (newX < 0 || newX >= this.cols || newY < 0 || newY >= this.rows)) {
+                if (this.hasShield) {
+                    this.hasShield = false;
+                    this.updatePowerupHUD();
+                    this.shakeCanvas();
+                    this.showFloatingScore(head.x, head.y, '\uD83D\uDEE1\uFE0F');
+                    window.sfx.eat();
+                    // Reverse direction instead of dying
+                    this.direction = { x: -this.direction.x, y: -this.direction.y };
+                    this.nextDirection = { ...this.direction };
+                    this.lastMoveTime = 0;
+                    return;
+                }
                 this.endGame();
                 return;
             }
 
-            // Check self collision
+            // Check self collision (Ghost power-up bypasses)
             if (this.snake.some(seg => seg.x === newX && seg.y === newY)) {
-                this.endGame();
-                return;
+                if (this.activePowerups.ghost) {
+                    // Ghost mode: pass through self
+                } else if (this.hasShield) {
+                    this.hasShield = false;
+                    this.updatePowerupHUD();
+                    this.shakeCanvas();
+                    this.showFloatingScore(head.x, head.y, '\uD83D\uDEE1\uFE0F');
+                    window.sfx.eat();
+                    this.direction = { x: -this.direction.x, y: -this.direction.y };
+                    this.nextDirection = { ...this.direction };
+                    this.lastMoveTime = 0;
+                    return;
+                } else {
+                    this.endGame();
+                    return;
+                }
             }
 
             // Add new head
@@ -493,26 +607,35 @@ class SnakeGame {
                             break;
                     }
 
+                    if (this.activePowerups.double) points *= 2;
                     this.score += points;
                     this.showFloatingScore(newX, newY, points);
                     if (typeof Haptic !== 'undefined') Haptic.light();
                     this.stats.foodEaten++;
                     this.hudScore.textContent = this.score;
 
-                    // Improved: More gradual speed curve using logarithm
-                    // Ensures game stays playable at any snake length
-                    // Speed decreases logarithmically but never below 70ms
                     const snakeLength = this.snake.length;
-                    const speedReduction = Math.log(snakeLength + 1) * 6; // More gentle curve
-                    this.currentSpeed = Math.max(70, this.baseSpeed - speedReduction);
+                    const speedReduction = Math.log(snakeLength + 1) * 6;
+                    if (!this.activePowerups.slow) {
+                        this.currentSpeed = Math.max(70, this.baseSpeed - speedReduction);
+                    }
 
-                    // Create particle effect
                     this.createParticles(newX, newY, food.type);
 
-                    // Remove food and spawn new
                     this.foods.splice(i, 1);
                     this.spawnFood();
+                    // 12% chance to spawn a power-up after eating
+                    if (Math.random() < 0.12) this.spawnPowerup();
                     foodEaten = true;
+                    break;
+                }
+            }
+
+            // Check power-up collision
+            for (let i = 0; i < this.powerups.length; i++) {
+                if (this.powerups[i].x === newX && this.powerups[i].y === newY) {
+                    this.collectPowerup(this.powerups[i]);
+                    this.powerups.splice(i, 1);
                     break;
                 }
             }
@@ -756,6 +879,38 @@ class SnakeGame {
         // Draw foods
         this.drawFoods();
 
+        // Draw power-ups
+        this.drawPowerups();
+
+        // Draw ghost overlay on snake
+        if (this.activePowerups.ghost) {
+            this.ctx.save();
+            this.ctx.globalAlpha = 0.3 + Math.sin(Date.now() / 200) * 0.15;
+            for (const seg of this.snake) {
+                this.ctx.fillStyle = '#9b59b6';
+                this.ctx.fillRect(
+                    seg.x * this.gridSize + 2, seg.y * this.gridSize + 2,
+                    this.gridSize - 4, this.gridSize - 4
+                );
+            }
+            this.ctx.restore();
+        }
+
+        // Draw shield indicator on head
+        if (this.hasShield && this.snake.length > 0) {
+            const head = this.snake[0];
+            const hx = head.x * this.gridSize + this.gridSize / 2;
+            const hy = head.y * this.gridSize + this.gridSize / 2;
+            this.ctx.save();
+            this.ctx.strokeStyle = '#1abc9c';
+            this.ctx.lineWidth = 2;
+            this.ctx.globalAlpha = 0.6 + Math.sin(Date.now() / 300) * 0.3;
+            this.ctx.beginPath();
+            this.ctx.arc(hx, hy, this.gridSize * 0.7, 0, Math.PI * 2);
+            this.ctx.stroke();
+            this.ctx.restore();
+        }
+
         // Draw particles
         this.drawParticles();
     }
@@ -881,6 +1036,54 @@ class SnakeGame {
         }
 
         this.ctx.shadowColor = 'transparent';
+    }
+
+    drawPowerups() {
+        const now = Date.now();
+        for (const pu of this.powerups) {
+            const x = pu.x * this.gridSize + this.gridSize / 2;
+            const y = pu.y * this.gridSize + this.gridSize / 2;
+            const pulse = Math.sin(now / 250) * 0.3 + 0.7;
+            const radius = this.gridSize * 0.45 * pulse;
+
+            // Glow ring
+            this.ctx.save();
+            this.ctx.strokeStyle = pu.color;
+            this.ctx.lineWidth = 2;
+            this.ctx.globalAlpha = 0.4 + pulse * 0.3;
+            this.ctx.beginPath();
+            this.ctx.arc(x, y, radius + 3, 0, Math.PI * 2);
+            this.ctx.stroke();
+
+            // Background circle
+            this.ctx.globalAlpha = 0.25;
+            this.ctx.fillStyle = pu.color;
+            this.ctx.beginPath();
+            this.ctx.arc(x, y, radius, 0, Math.PI * 2);
+            this.ctx.fill();
+
+            // Icon
+            this.ctx.globalAlpha = 1;
+            this.ctx.font = `${this.gridSize * 0.7}px Arial`;
+            this.ctx.textAlign = 'center';
+            this.ctx.textBaseline = 'middle';
+            this.ctx.fillText(pu.icon, x, y);
+            this.ctx.restore();
+
+            // Timeout indicator (shrinking ring)
+            const elapsed = now - pu.spawnTime;
+            const remaining = 1 - elapsed / pu.timeout;
+            if (remaining > 0 && remaining < 0.4) {
+                this.ctx.save();
+                this.ctx.globalAlpha = remaining * 2;
+                this.ctx.strokeStyle = '#fff';
+                this.ctx.lineWidth = 1;
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, radius + 6, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * remaining);
+                this.ctx.stroke();
+                this.ctx.restore();
+            }
+        }
     }
 
     drawParticles() {

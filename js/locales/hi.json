@@ -80,5 +80,11 @@
     "apple": "सेब",
     "bonus": "बोनस",
     "diamond": "हीरा"
+  },
+  "powerups": {
+    "slow": "धीमा",
+    "ghost": "भूत",
+    "double": "डबल अंक",
+    "shield": "ढाल"
   }
 }

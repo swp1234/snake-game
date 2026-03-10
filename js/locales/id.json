@@ -80,5 +80,11 @@
     "apple": "Apel",
     "bonus": "Bonus",
     "diamond": "Berlian"
+  },
+  "powerups": {
+    "slow": "Lambat",
+    "ghost": "Hantu",
+    "double": "Poin ganda",
+    "shield": "Perisai"
   }
 }

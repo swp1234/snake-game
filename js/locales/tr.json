@@ -80,5 +80,11 @@
     "apple": "Elma",
     "bonus": "Bonus",
     "diamond": "Elmas"
+  },
+  "powerups": {
+    "slow": "Yavaş",
+    "ghost": "Hayalet",
+    "double": "Çift puan",
+    "shield": "Kalkan"
   }
 }

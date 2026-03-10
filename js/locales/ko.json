@@ -80,5 +80,11 @@
     "apple": "사과",
     "bonus": "보너스",
     "diamond": "다이아몬드"
+  },
+  "powerups": {
+    "slow": "감속",
+    "ghost": "투명",
+    "double": "2배 점수",
+    "shield": "보호막"
   }
 }

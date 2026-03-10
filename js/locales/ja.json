@@ -80,5 +80,11 @@
     "apple": "りんご",
     "bonus": "ボーナス",
     "diamond": "ダイヤモンド"
+  },
+  "powerups": {
+    "slow": "スロー",
+    "ghost": "ゴースト",
+    "double": "2倍ポイント",
+    "shield": "シールド"
   }
 }
