@@ -3,7 +3,7 @@
  * Enables offline functionality and PWA features
  */
 
-const CACHE_NAME = 'snake-classic-v2';
+const CACHE_NAME = 'snake-classic-v3';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
