@@ -41,6 +41,17 @@ class SnakeGame {
         // Leaderboard system
         this.leaderboard = new LeaderboardManager('snake-game', 10);
 
+        // Preload sprite assets
+        this.snakeHeadImg = new Image();
+        this.snakeHeadImg.src = 'assets/snake-head-opt.png';
+        this.snakeHeadLoaded = false;
+        this.snakeHeadImg.onload = () => { this.snakeHeadLoaded = true; };
+
+        this.foodImg = new Image();
+        this.foodImg.src = 'assets/food-opt.png';
+        this.foodImgLoaded = false;
+        this.foodImg.onload = () => { this.foodImgLoaded = true; };
+
         this.initDOMElements();
         this.setupEventListeners();
         this.resizeCanvas();
@@ -702,28 +713,50 @@ class SnakeGame {
             const y = segment.y * this.gridSize;
 
             if (i === 0) {
-                // Head
-                const gradient = this.ctx.createLinearGradient(x, y, x + this.gridSize, y + this.gridSize);
-                gradient.addColorStop(0, '#2ecc71');
-                gradient.addColorStop(1, '#3bd882');
-                this.ctx.fillStyle = gradient;
+                // Head — use sprite if loaded, else fallback to gradient rect
                 this.ctx.shadowColor = 'rgba(46, 204, 113, 0.8)';
                 this.ctx.shadowBlur = 12;
+
+                if (this.snakeHeadLoaded) {
+                    // Rotate sprite based on direction
+                    let angle = 0;
+                    if (this.direction.x === 1 && this.direction.y === 0) angle = 0;
+                    else if (this.direction.x === -1 && this.direction.y === 0) angle = Math.PI;
+                    else if (this.direction.x === 0 && this.direction.y === -1) angle = -Math.PI / 2;
+                    else if (this.direction.x === 0 && this.direction.y === 1) angle = Math.PI / 2;
+
+                    this.ctx.save();
+                    this.ctx.translate(x + this.gridSize / 2, y + this.gridSize / 2);
+                    this.ctx.rotate(angle);
+                    this.ctx.drawImage(
+                        this.snakeHeadImg,
+                        -this.gridSize / 2, -this.gridSize / 2,
+                        this.gridSize, this.gridSize
+                    );
+                    this.ctx.restore();
+                } else {
+                    // Fallback: gradient rect
+                    const gradient = this.ctx.createLinearGradient(x, y, x + this.gridSize, y + this.gridSize);
+                    gradient.addColorStop(0, '#2ecc71');
+                    gradient.addColorStop(1, '#3bd882');
+                    this.ctx.fillStyle = gradient;
+                    this.ctx.fillRect(x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
+                }
             } else if (i === this.snake.length - 1) {
                 // Tail (fade)
                 const alpha = (i / this.snake.length) * 0.5;
                 this.ctx.fillStyle = `rgba(46, 204, 113, ${alpha})`;
                 this.ctx.shadowColor = 'rgba(46, 204, 113, 0)';
                 this.ctx.shadowBlur = 0;
+                this.ctx.fillRect(x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
             } else {
                 // Body
                 const alpha = (i / this.snake.length) * 0.8;
                 this.ctx.fillStyle = `rgba(46, 204, 113, ${alpha})`;
                 this.ctx.shadowColor = 'rgba(46, 204, 113, 0.4)';
                 this.ctx.shadowBlur = 8;
+                this.ctx.fillRect(x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
             }
-
-            this.ctx.fillRect(x + 1, y + 1, this.gridSize - 2, this.gridSize - 2);
         }
 
         this.ctx.shadowColor = 'transparent';
@@ -757,19 +790,30 @@ class SnakeGame {
                     break;
             }
 
-            // Draw circle
-            this.ctx.fillStyle = color;
-            this.ctx.shadowColor = `${color}`;
-            this.ctx.shadowBlur = 12;
-            this.ctx.beginPath();
-            this.ctx.arc(x, y, size, 0, Math.PI * 2);
-            this.ctx.fill();
+            // Use food sprite for apple type if loaded
+            if (food.type === 'apple' && this.foodImgLoaded) {
+                this.ctx.shadowColor = color;
+                this.ctx.shadowBlur = 12;
+                const spriteSize = this.gridSize * pulse;
+                this.ctx.drawImage(
+                    this.foodImg,
+                    x - spriteSize / 2, y - spriteSize / 2,
+                    spriteSize, spriteSize
+                );
+            } else {
+                // Fallback: circle + emoji (also used for bonus/diamond types)
+                this.ctx.fillStyle = color;
+                this.ctx.shadowColor = `${color}`;
+                this.ctx.shadowBlur = 12;
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, size, 0, Math.PI * 2);
+                this.ctx.fill();
 
-            // Draw emoji
-            this.ctx.font = `${this.gridSize * 0.6}px Arial`;
-            this.ctx.textAlign = 'center';
-            this.ctx.textBaseline = 'middle';
-            this.ctx.fillText(emoji, x, y);
+                this.ctx.font = `${this.gridSize * 0.6}px Arial`;
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.fillText(emoji, x, y);
+            }
         }
 
         this.ctx.shadowColor = 'transparent';
