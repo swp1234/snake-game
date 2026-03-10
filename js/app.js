@@ -338,8 +338,26 @@ class SnakeGame {
         window.addEventListener('resize', () => this.resizeCanvas());
     }
 
+    showNewBest() {
+        let el = document.getElementById('new-best-flash');
+        if (!el) {
+            el = document.createElement('div');
+            el.id = 'new-best-flash';
+            el.style.cssText = 'position:fixed;top:20%;left:50%;transform:translate(-50%,-50%) scale(0);font-family:var(--heading,"Syne",sans-serif);font-size:32px;font-weight:800;color:#fbbf24;text-shadow:0 0 30px rgba(251,191,36,0.6);pointer-events:none;z-index:200;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s;opacity:0;white-space:nowrap;';
+            document.body.appendChild(el);
+        }
+        el.textContent = 'NEW BEST!';
+        el.style.transform = 'translate(-50%,-50%) scale(1.2)';
+        el.style.opacity = '1';
+        setTimeout(() => {
+            el.style.transform = 'translate(-50%,-50%) scale(0.8)';
+            el.style.opacity = '0';
+        }, 1200);
+    }
+
     reset() {
         this.score = 0;
+        this._newBestShown = false;
         this.snake = [
             { x: Math.floor(this.cols / 2), y: Math.floor(this.rows / 2) }
         ];
@@ -589,6 +607,10 @@ class SnakeGame {
             this.highScore = this.score;
             localStorage.setItem('snake_highscore', this.highScore);
             this.goNewRecord.classList.remove('hidden');
+            if (!this._newBestShown) {
+                this._newBestShown = true;
+                this.showNewBest();
+            }
             window.sfx.levelUp();
         } else {
             this.goNewRecord.classList.add('hidden');
