@@ -27,6 +27,9 @@ class SnakeGame {
         this.gameMode = 'wall'; // wall or infinite
         this.score = 0;
         this.highScore = parseInt(localStorage.getItem('snake_highscore')) || 0;
+        this.combo = 0;
+        this.lastEatTime = 0;
+        this.comboTimeout = 3000;
         this.gameRunning = false;
         this.gamePaused = false;
         this.startTime = 0;
@@ -365,9 +368,9 @@ class SnakeGame {
         window.addEventListener('resize', () => this.resizeCanvas());
     }
 
-    showFloatingScore(gridX, gridY, points) {
+    showFloatingScore(gridX, gridY, points, suffix = '') {
         const el = document.createElement('div');
-        el.textContent = `+${points}`;
+        el.textContent = `+${points}${suffix}`;
         const screenX = gridX * this.gridSize + this.gridSize / 2;
         const screenY = gridY * this.gridSize;
         const rect = this.canvas.getBoundingClientRect();
@@ -409,6 +412,8 @@ class SnakeGame {
 
     reset() {
         this.score = 0;
+        this.combo = 0;
+        this.lastEatTime = 0;
         this._newBestShown = false;
         this.snake = [
             { x: Math.floor(this.cols / 2), y: Math.floor(this.rows / 2) }
@@ -624,8 +629,23 @@ class SnakeGame {
                     }
 
                     if (this.activePowerups.double) points *= 2;
+
+                    // Combo system: eat within 3s for multiplier
+                    const now = Date.now();
+                    if (now - this.lastEatTime < this.comboTimeout) {
+                        this.combo++;
+                    } else {
+                        this.combo = 1;
+                    }
+                    this.lastEatTime = now;
+                    if (this.combo >= 2) {
+                        const comboBonus = Math.floor(points * (this.combo - 1) * 0.25);
+                        points += comboBonus;
+                    }
+
                     this.score += points;
-                    this.showFloatingScore(newX, newY, points);
+                    const comboLabel = this.combo >= 2 ? ` x${this.combo}` : '';
+                    this.showFloatingScore(newX, newY, points, comboLabel);
                     if (typeof Haptic !== 'undefined') Haptic.light();
                     this.stats.foodEaten++;
                     this.hudScore.textContent = this.score;
