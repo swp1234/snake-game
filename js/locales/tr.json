@@ -33,7 +33,10 @@
   "game": {
     "tapToStart": "Başlamak için dokunun!",
     "back": "DopaBrain Ana Sayfa",
-    "gameOver": "Oyun Bitti"
+    "gameOver": "Oyun Bitti",
+    "newBest": "YENİ REKOR!",
+    "resetConfirm": "Tüm kayıtları sıfırlamak istediğinize emin misiniz?",
+    "resetSuccess": "Kayıtlar sıfırlandı!"
   },
   "hud": {
     "wallMode": "Duvar Modu",

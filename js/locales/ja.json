@@ -33,7 +33,10 @@
   "game": {
     "tapToStart": "タップして開始！",
     "back": "DopaBrain ホーム",
-    "gameOver": "ゲームオーバー"
+    "gameOver": "ゲームオーバー",
+    "newBest": "最高記録！",
+    "resetConfirm": "すべての記録をリセットしますか？",
+    "resetSuccess": "記録がリセットされました！"
   },
   "hud": {
     "wallMode": "ウォールモード",

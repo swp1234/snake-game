@@ -401,7 +401,7 @@ class SnakeGame {
             el.style.cssText = 'position:fixed;top:20%;left:50%;transform:translate(-50%,-50%) scale(0);font-family:var(--heading,"Syne",sans-serif);font-size:32px;font-weight:800;color:#fbbf24;text-shadow:0 0 30px rgba(251,191,36,0.6);pointer-events:none;z-index:200;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s;opacity:0;white-space:nowrap;';
             document.body.appendChild(el);
         }
-        el.textContent = 'NEW BEST!';
+        el.textContent = window.i18n?.t('game.newBest') || 'NEW BEST!';
         el.style.transform = 'translate(-50%,-50%) scale(1.2)';
         el.style.opacity = '1';
         setTimeout(() => {
@@ -1238,12 +1238,12 @@ SnakeGame.prototype.displayLeaderboard = function(leaderboardResult) {
     const resetBtn = leaderboardContainer.querySelector('#reset-leaderboard-btn');
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to reset all records?')) {
+            if (confirm(window.i18n?.t('game.resetConfirm') || 'Are you sure you want to reset all records?')) {
                 this.leaderboard.resetScores();
                 this.highScore = 0;
                 localStorage.setItem('snake_highscore', '0');
                 this.displayLeaderboard({ isNewRecord: false, rank: -1, notifications: [] });
-                alert('Records reset!');
+                alert(window.i18n?.t('game.resetSuccess') || 'Records reset!');
             }
         });
     }

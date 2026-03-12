@@ -33,7 +33,10 @@
   "game": {
     "tapToStart": "Toque para começar!",
     "back": "Início do DopaBrain",
-    "gameOver": "Fim do jogo"
+    "gameOver": "Fim do jogo",
+    "newBest": "NOVO RECORDE!",
+    "resetConfirm": "Tem certeza que deseja redefinir todos os registros?",
+    "resetSuccess": "Registros redefinidos!"
   },
   "hud": {
     "wallMode": "Modo Parede",

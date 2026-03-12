@@ -33,7 +33,10 @@
   "game": {
     "tapToStart": "Zum Starten tippen!",
     "back": "DopaBrain Startseite",
-    "gameOver": "Spiel vorbei"
+    "gameOver": "Spiel vorbei",
+    "newBest": "NEUER REKORD!",
+    "resetConfirm": "Möchten Sie alle Rekorde zurücksetzen?",
+    "resetSuccess": "Rekorde zurückgesetzt!"
   },
   "hud": {
     "wallMode": "Wandmodus",

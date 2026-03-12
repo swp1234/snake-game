@@ -33,7 +33,10 @@
   "game": {
     "tapToStart": "Tap to Start!",
     "back": "DopaBrain Home",
-    "gameOver": "Game Over"
+    "gameOver": "Game Over",
+    "newBest": "NEW BEST!",
+    "resetConfirm": "Are you sure you want to reset all records?",
+    "resetSuccess": "Records reset!"
   },
   "hud": {
     "wallMode": "Wall Mode",

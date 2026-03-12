@@ -33,7 +33,10 @@
   "game": {
     "tapToStart": "शुरू करने के लिए टैप करें!",
     "back": "DopaBrain होम",
-    "gameOver": "गेम ओवर"
+    "gameOver": "गेम ओवर",
+    "newBest": "नया रिकॉर्ड!",
+    "resetConfirm": "क्या आप सभी रिकॉर्ड रीसेट करना चाहते हैं?",
+    "resetSuccess": "रिकॉर्ड रीसेट!"
   },
   "hud": {
     "wallMode": "वॉल मोड",

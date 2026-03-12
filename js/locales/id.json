@@ -33,7 +33,10 @@
   "game": {
     "tapToStart": "Ketuk untuk memulai!",
     "back": "Beranda DopaBrain",
-    "gameOver": "Permainan Berakhir"
+    "gameOver": "Permainan Berakhir",
+    "newBest": "REKOR BARU!",
+    "resetConfirm": "Yakin ingin mereset semua rekor?",
+    "resetSuccess": "Rekor direset!"
   },
   "hud": {
     "wallMode": "Mode Dinding",
