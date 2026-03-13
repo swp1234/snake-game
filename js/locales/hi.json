@@ -36,7 +36,14 @@
     "gameOver": "गेम ओवर",
     "newBest": "नया रिकॉर्ड!",
     "resetConfirm": "क्या आप सभी रिकॉर्ड रीसेट करना चाहते हैं?",
-    "resetSuccess": "रिकॉर्ड रीसेट!"
+    "resetSuccess": "रिकॉर्ड रीसेट!",
+    "moreGames": "और गेम"
+  },
+  "related": {
+    "flappyBird": "फ्लैपी बर्ड",
+    "zigzagRunner": "ज़िगज़ैग रनर",
+    "mazeRunner": "भूलभुलैया",
+    "stackTower": "स्टैक टावर"
   },
   "hud": {
     "wallMode": "वॉल मोड",

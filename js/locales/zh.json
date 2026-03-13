@@ -36,7 +36,14 @@
     "gameOver": "游戏结束",
     "newBest": "新纪录！",
     "resetConfirm": "确定要重置所有记录吗？",
-    "resetSuccess": "记录已重置！"
+    "resetSuccess": "记录已重置！",
+    "moreGames": "更多游戏"
+  },
+  "related": {
+    "flappyBird": "飞翔的小鸟",
+    "zigzagRunner": "之字跑者",
+    "mazeRunner": "迷宫跑者",
+    "stackTower": "叠叠塔"
   },
   "hud": {
     "wallMode": "墙壁模式",

@@ -36,7 +36,14 @@
     "gameOver": "게임 오버",
     "newBest": "최고 기록!",
     "resetConfirm": "모든 기록을 초기화하시겠습니까?",
-    "resetSuccess": "기록이 초기화되었습니다!"
+    "resetSuccess": "기록이 초기화되었습니다!",
+    "moreGames": "더 많은 게임"
+  },
+  "related": {
+    "flappyBird": "플래피 버드",
+    "zigzagRunner": "지그재그 러너",
+    "mazeRunner": "미로 탈출",
+    "stackTower": "스택 타워"
   },
   "hud": {
     "wallMode": "벽 모드",

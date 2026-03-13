@@ -36,7 +36,14 @@
     "gameOver": "Permainan Berakhir",
     "newBest": "REKOR BARU!",
     "resetConfirm": "Yakin ingin mereset semua rekor?",
-    "resetSuccess": "Rekor direset!"
+    "resetSuccess": "Rekor direset!",
+    "moreGames": "Game lainnya"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Pelari Zigzag",
+    "mazeRunner": "Pelari Labirin",
+    "stackTower": "Menara Tumpuk"
   },
   "hud": {
     "wallMode": "Mode Dinding",

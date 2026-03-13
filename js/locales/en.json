@@ -36,7 +36,14 @@
     "gameOver": "Game Over",
     "newBest": "NEW BEST!",
     "resetConfirm": "Are you sure you want to reset all records?",
-    "resetSuccess": "Records reset!"
+    "resetSuccess": "Records reset!",
+    "moreGames": "More Games"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Zigzag Runner",
+    "mazeRunner": "Maze Runner",
+    "stackTower": "Stack Tower"
   },
   "hud": {
     "wallMode": "Wall Mode",

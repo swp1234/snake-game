@@ -36,7 +36,14 @@
     "gameOver": "Oyun Bitti",
     "newBest": "YENİ REKOR!",
     "resetConfirm": "Tüm kayıtları sıfırlamak istediğinize emin misiniz?",
-    "resetSuccess": "Kayıtlar sıfırlandı!"
+    "resetSuccess": "Kayıtlar sıfırlandı!",
+    "moreGames": "Daha fazla oyun"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Zikzak Koşucu",
+    "mazeRunner": "Labirent Koşucu",
+    "stackTower": "Yığın Kule"
   },
   "hud": {
     "wallMode": "Duvar Modu",

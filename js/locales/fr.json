@@ -36,7 +36,14 @@
     "gameOver": "Fin du jeu",
     "newBest": "NOUVEAU RECORD !",
     "resetConfirm": "Êtes-vous sûr de vouloir réinitialiser tous les records ?",
-    "resetSuccess": "Records réinitialisés !"
+    "resetSuccess": "Records réinitialisés !",
+    "moreGames": "Plus de jeux"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Coureur Zigzag",
+    "mazeRunner": "Coureur de Labyrinthe",
+    "stackTower": "Tour Empilable"
   },
   "hud": {
     "wallMode": "Mode Mur",

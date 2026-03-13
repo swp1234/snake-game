@@ -36,7 +36,14 @@
     "gameOver": "ゲームオーバー",
     "newBest": "最高記録！",
     "resetConfirm": "すべての記録をリセットしますか？",
-    "resetSuccess": "記録がリセットされました！"
+    "resetSuccess": "記録がリセットされました！",
+    "moreGames": "もっとゲーム"
+  },
+  "related": {
+    "flappyBird": "フラッピーバード",
+    "zigzagRunner": "ジグザグランナー",
+    "mazeRunner": "迷路ランナー",
+    "stackTower": "スタックタワー"
   },
   "hud": {
     "wallMode": "ウォールモード",

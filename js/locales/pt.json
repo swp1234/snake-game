@@ -36,7 +36,14 @@
     "gameOver": "Fim do jogo",
     "newBest": "NOVO RECORDE!",
     "resetConfirm": "Tem certeza que deseja redefinir todos os registros?",
-    "resetSuccess": "Registros redefinidos!"
+    "resetSuccess": "Registros redefinidos!",
+    "moreGames": "Mais jogos"
+  },
+  "related": {
+    "flappyBird": "Flappy Bird",
+    "zigzagRunner": "Corredor Zigzag",
+    "mazeRunner": "Labirinto",
+    "stackTower": "Torre Empilhável"
   },
   "hud": {
     "wallMode": "Modo Parede",

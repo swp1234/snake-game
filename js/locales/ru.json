@@ -36,7 +36,14 @@
     "gameOver": "Конец игры",
     "newBest": "НОВЫЙ РЕКОРД!",
     "resetConfirm": "Вы уверены, что хотите сбросить все записи?",
-    "resetSuccess": "Записи сброшены!"
+    "resetSuccess": "Записи сброшены!",
+    "moreGames": "Ещё игры"
+  },
+  "related": {
+    "flappyBird": "Флэппи Берд",
+    "zigzagRunner": "Зигзаг Бегун",
+    "mazeRunner": "Лабиринт",
+    "stackTower": "Стек Башня"
   },
   "hud": {
     "wallMode": "Режим стен",
