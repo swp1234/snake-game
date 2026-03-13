@@ -454,23 +454,26 @@ class SnakeGame {
                     !this.obstacles.some(o => o.x === x && o.y === y);
         }
 
-        // Improved: Better food type distribution
-        // 80% apple (basic), 15% bonus (timed), 5% diamond (rare)
-        // This keeps bonus/diamond special without overwhelming early game
+        // Food type distribution:
+        // 75% apple, 13% bonus, 4% diamond, 3% golden, 5% poison
         const rand = Math.random();
-        if (rand < 0.80) {
+        if (rand < 0.75) {
             type = 'apple';
-        } else if (rand < 0.95) {
+        } else if (rand < 0.88) {
             type = 'bonus';
-        } else {
+        } else if (rand < 0.92) {
             type = 'diamond';
+        } else if (rand < 0.95) {
+            type = 'golden';
+        } else {
+            type = 'poison';
         }
 
-        // Improved: Longer timeout for special foods (easier to collect)
+        // Timeout per type: bonus 8s, diamond 5s, golden 6s, poison 8s
         this.foods.push({
             x, y, type,
             spawnTime: Date.now(),
-            timeout: type === 'bonus' ? 8000 : (type === 'diamond' ? 5000 : null)
+            timeout: type === 'bonus' ? 8000 : (type === 'diamond' ? 5000 : (type === 'golden' ? 6000 : (type === 'poison' ? 8000 : null)))
         });
     }
 
@@ -581,6 +584,8 @@ class SnakeGame {
             const def = this.POWERUP_TYPES.find(d => d.type === type);
             if (def) {
                 html += `<span class="pu-badge" style="border-color:${def.color}">${def.icon} ${remaining}s</span>`;
+            } else if (type === 'reverse') {
+                html += `<span class="pu-badge" style="border-color:#9b59b6">☠️ ${remaining}s</span>`;
             }
         }
         container.innerHTML = html;
@@ -595,6 +600,11 @@ class SnakeGame {
         // Move snake
         if (this.lastMoveTime > this.currentSpeed) {
             this.direction = { ...this.nextDirection };
+
+            // Reverse controls if poison effect is active
+            if (this.activePowerups['reverse']) {
+                this.direction = { x: -this.direction.x, y: -this.direction.y };
+            }
 
             const head = this.snake[0];
             let newX = head.x + this.direction.x;
@@ -689,6 +699,20 @@ class SnakeGame {
                             points = 100;
                             window.sfx.bonus();
                             break;
+                        case 'golden':
+                            points = 20;
+                            window.sfx.bonus();
+                            // Spawn 3 bonus apples
+                            for (let g = 0; g < 3; g++) {
+                                setTimeout(() => this.spawnFood(), g * 200);
+                            }
+                            break;
+                        case 'poison':
+                            points = 10;
+                            window.sfx.eat();
+                            this.activePowerups['reverse'] = 3000;
+                            this.updatePowerupHUD();
+                            break;
                     }
 
                     if (this.activePowerups.double) points *= 2;
@@ -753,6 +777,12 @@ class SnakeGame {
                 if (food.type === 'diamond' && Date.now() - food.spawnTime > 5000) {
                     return false;
                 }
+                if (food.type === 'golden' && Date.now() - food.spawnTime > 6000) {
+                    return false;
+                }
+                if (food.type === 'poison' && Date.now() - food.spawnTime > 8000) {
+                    return false;
+                }
                 return true;
             });
 
@@ -770,7 +800,10 @@ class SnakeGame {
         const colors = {
             apple: '#e74c3c',
             bonus: '#f39c12',
-            diamond: '#3498db'
+            diamond: '#3498db',
+            golden: '#ffd700',
+            poison: '#9b59b6',
+            reverse: '#9b59b6'
         };
 
         const color = colors[foodType] || '#2ecc71';
@@ -1111,6 +1144,14 @@ class SnakeGame {
                     color = '#3498db';
                     emoji = '💎';
                     break;
+                case 'golden':
+                    color = '#ffd700';
+                    emoji = '🍎';
+                    break;
+                case 'poison':
+                    color = '#9b59b6';
+                    emoji = '🍏';
+                    break;
             }
 
             // Use food sprite for apple type if loaded
@@ -1123,6 +1164,28 @@ class SnakeGame {
                     x - spriteSize / 2, y - spriteSize / 2,
                     spriteSize, spriteSize
                 );
+            } else if (food.type === 'golden') {
+                // Golden apple with golden glow + sparkle
+                this.ctx.font = `${radius * 1.6}px sans-serif`;
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.fillText('🍎', x, y + radius * 0.15);
+                this.ctx.shadowColor = '#ffd700';
+                this.ctx.shadowBlur = 12;
+                this.ctx.font = `${radius * 0.6}px sans-serif`;
+                this.ctx.fillText('✨', x + radius * 0.5, y - radius * 0.4);
+                this.ctx.shadowBlur = 0;
+            } else if (food.type === 'poison') {
+                // Poison apple with purple aura + skull
+                this.ctx.font = `${radius * 1.6}px sans-serif`;
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.fillText('🍏', x, y + radius * 0.15);
+                this.ctx.shadowColor = '#9b59b6';
+                this.ctx.shadowBlur = 8;
+                this.ctx.font = `${radius * 0.6}px sans-serif`;
+                this.ctx.fillText('☠️', x + radius * 0.5, y - radius * 0.4);
+                this.ctx.shadowBlur = 0;
             } else {
                 // Fallback: circle + emoji (also used for bonus/diamond types)
                 this.ctx.fillStyle = color;
