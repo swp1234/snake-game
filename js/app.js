@@ -1321,8 +1321,12 @@ class SnakeGame {
             const deltaTime = (now - lastTime) / 1000;
             lastTime = now;
 
-            this.update(deltaTime * 1000); // Convert to ms
-            this.draw();
+            try {
+                this.update(deltaTime * 1000); // Convert to ms
+                this.draw();
+            } catch (e) {
+                console.error('Game loop error:', e);
+            }
 
             requestAnimationFrame(loop);
         };
