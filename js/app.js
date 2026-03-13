@@ -423,6 +423,8 @@ class SnakeGame {
         this.powerups = [];
         this.activePowerups = {};
         this.hasShield = false;
+        this.obstacles = [];
+        this.lastObstacleScore = 0;
         this.direction = { x: 1, y: 0 };
         this.nextDirection = { x: 1, y: 0 };
         this.currentSpeed = this.baseSpeed;
@@ -448,7 +450,8 @@ class SnakeGame {
         while (!valid) {
             x = Math.floor(Math.random() * this.cols);
             y = Math.floor(Math.random() * this.rows);
-            valid = !this.snake.some(seg => seg.x === x && seg.y === y);
+            valid = !this.snake.some(seg => seg.x === x && seg.y === y) &&
+                    !this.obstacles.some(o => o.x === x && o.y === y);
         }
 
         // Improved: Better food type distribution
@@ -492,6 +495,44 @@ class SnakeGame {
             spawnTime: Date.now(),
             timeout: 10000
         });
+    }
+
+    spawnObstacle() {
+        if (this.gameMode !== 'infinite') return;
+        if (this.cols <= 0 || this.rows <= 0) return;
+        // Max obstacles based on score
+        const maxObs = Math.min(8, Math.floor(this.score / 80));
+        if (this.obstacles.length >= maxObs) return;
+
+        let x, y, valid = false;
+        let attempts = 0;
+        while (!valid && attempts < 50) {
+            x = Math.floor(Math.random() * this.cols);
+            y = Math.floor(Math.random() * this.rows);
+            // Keep away from snake head (3-cell buffer)
+            const head = this.snake[0];
+            const hdx = Math.abs(x - head.x);
+            const hdy = Math.abs(y - head.y);
+            valid = hdx + hdy > 3 &&
+                    !this.snake.some(seg => seg.x === x && seg.y === y) &&
+                    !this.foods.some(f => f.x === x && f.y === y) &&
+                    !this.powerups.some(p => p.x === x && p.y === y) &&
+                    !this.obstacles.some(o => o.x === x && o.y === y);
+            attempts++;
+        }
+        if (valid) {
+            this.obstacles.push({ x, y, spawnTime: Date.now() });
+        }
+    }
+
+    checkObstacleSpawn() {
+        if (this.gameMode !== 'infinite') return;
+        // Spawn obstacles every 50 points, starting at 50
+        const threshold = Math.floor(this.score / 50) * 50;
+        if (threshold >= 50 && threshold > this.lastObstacleScore) {
+            this.lastObstacleScore = threshold;
+            this.spawnObstacle();
+        }
     }
 
     collectPowerup(pu) {
@@ -603,6 +644,28 @@ class SnakeGame {
                 }
             }
 
+            // Check obstacle collision (infinite mode)
+            if (this.obstacles.some(o => o.x === newX && o.y === newY)) {
+                if (this.activePowerups.ghost) {
+                    // Ghost mode: pass through obstacles
+                } else if (this.hasShield) {
+                    this.hasShield = false;
+                    this.updatePowerupHUD();
+                    this.shakeCanvas();
+                    this.showFloatingScore(head.x, head.y, '\uD83D\uDEE1\uFE0F');
+                    window.sfx.eat();
+                    // Remove the obstacle hit
+                    this.obstacles = this.obstacles.filter(o => o.x !== newX || o.y !== newY);
+                    this.direction = { x: -this.direction.x, y: -this.direction.y };
+                    this.nextDirection = { ...this.direction };
+                    this.lastMoveTime = 0;
+                    return;
+                } else {
+                    this.endGame();
+                    return;
+                }
+            }
+
             // Add new head
             this.snake.unshift({ x: newX, y: newY });
 
@@ -662,6 +725,7 @@ class SnakeGame {
                     this.spawnFood();
                     // 12% chance to spawn a power-up after eating
                     if (Math.random() < 0.12) this.spawnPowerup();
+                    this.checkObstacleSpawn();
                     foodEaten = true;
                     break;
                 }
@@ -919,6 +983,9 @@ class SnakeGame {
         // Draw power-ups
         this.drawPowerups();
 
+        // Draw obstacles
+        this.drawObstacles();
+
         // Draw ghost overlay on snake
         if (this.activePowerups.ghost) {
             this.ctx.save();
@@ -1120,6 +1187,50 @@ class SnakeGame {
                 this.ctx.stroke();
                 this.ctx.restore();
             }
+        }
+    }
+
+    drawObstacles() {
+        if (this.obstacles.length === 0) return;
+        const now = Date.now();
+        const gs = this.gridSize;
+        for (const obs of this.obstacles) {
+            const x = obs.x * gs;
+            const y = obs.y * gs;
+            const age = now - obs.spawnTime;
+            const fadeIn = Math.min(age / 300, 1);
+
+            this.ctx.save();
+            this.ctx.globalAlpha = fadeIn * 0.85;
+
+            // Pulsing danger glow
+            const pulse = 0.6 + Math.sin(now / 400 + obs.x * 0.5) * 0.2;
+            this.ctx.shadowColor = '#ef4444';
+            this.ctx.shadowBlur = 6 * pulse;
+
+            // Cross/X pattern
+            const pad = gs * 0.15;
+            const cx = x + gs / 2;
+            const cy = y + gs / 2;
+            const half = gs / 2 - pad;
+
+            // Background
+            this.ctx.fillStyle = 'rgba(127,29,29,0.6)';
+            this.ctx.fillRect(x + pad, y + pad, gs - pad * 2, gs - pad * 2);
+
+            // X lines
+            this.ctx.strokeStyle = `rgba(239,68,68,${0.7 * pulse})`;
+            this.ctx.lineWidth = 2;
+            this.ctx.lineCap = 'round';
+            this.ctx.beginPath();
+            this.ctx.moveTo(cx - half, cy - half);
+            this.ctx.lineTo(cx + half, cy + half);
+            this.ctx.moveTo(cx + half, cy - half);
+            this.ctx.lineTo(cx - half, cy + half);
+            this.ctx.stroke();
+
+            this.ctx.shadowBlur = 0;
+            this.ctx.restore();
         }
     }
 
