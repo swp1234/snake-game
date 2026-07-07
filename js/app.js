@@ -53,6 +53,8 @@ class SnakeGame {
         this.powerups = []; // items on field
         this.activePowerups = {}; // { type: remainingMs }
         this.hasShield = false;
+        this.obstacles = [];
+        this.lastObstacleScore = 0;
         this.POWERUP_TYPES = [
             { type: 'slow',   icon: '\uD83D\uDC0C', color: '#3498db', duration: 5000 },
             { type: 'ghost',  icon: '\uD83D\uDC7B', color: '#9b59b6', duration: 5000 },
@@ -1254,10 +1256,11 @@ class SnakeGame {
     }
 
     drawObstacles() {
-        if (this.obstacles.length === 0) return;
+        const obstacles = Array.isArray(this.obstacles) ? this.obstacles : [];
+        if (obstacles.length === 0) return;
         const now = Date.now();
         const gs = this.gridSize;
-        for (const obs of this.obstacles) {
+        for (const obs of obstacles) {
             const x = obs.x * gs;
             const y = obs.y * gs;
             const age = now - obs.spawnTime;
