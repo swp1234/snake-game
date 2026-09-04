@@ -3,13 +3,6 @@
     "loading": "読み込み中...",
     "skipLink": "コンテンツへ移動"
   },
-  "ad": {
-    "placeholder": "広告エリア",
-    "placeholder_interstitial": "広告エリア（全画面）",
-    "label": "広告",
-    "countdown": "秒で閉じる",
-    "close": "✕ 閉じる"
-  },
   "menu": {
     "subtitle": "クラシックスネークゲーム",
     "highScore": "ハイスコア",
@@ -59,7 +52,6 @@
     "score": "スコア",
     "best": "ベスト",
     "newRecord": "🎉 新記録！",
-    "revive": "広告を見て復活する",
     "retry": "もう一度",
     "share": "📤 シェア",
     "menu": "🏠 メニュー"
@@ -70,10 +62,6 @@
     "foodEaten": "食べた数",
     "survivalTime": "合計生存時間",
     "minuteUnit": "分"
-  },
-  "share_msg": {
-    "text": "スネークで{score}点！{icon} {title} 🐍\nプレイ：dopabrain.com/snake-game/",
-    "alert": "シェア：{url}"
   },
   "recommendations": {
     "title": "これも試してみてください"

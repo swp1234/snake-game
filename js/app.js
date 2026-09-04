@@ -19,6 +19,18 @@ function spawnConfetti() {
     }
 }
 
+const snakeStages = new Set();
+
+function trackSnakeStage(name) {
+    if (snakeStages.has(name)) return;
+    snakeStages.add(name);
+    if (typeof gtag === 'function') gtag('event', name);
+    else {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(['event', name, {}]);
+    }
+}
+
 class SnakeGame {
     constructor() {
         this.canvas = document.getElementById('game-canvas');
@@ -106,7 +118,6 @@ class SnakeGame {
         this.pauseOverlay = document.getElementById('pause-overlay');
         this.gameoverScreen = document.getElementById('gameover-screen');
         this.statsScreen = document.getElementById('stats-screen');
-        this.interstitialOverlay = document.getElementById('interstitial-overlay');
 
         // Buttons
         this.btnStart = document.getElementById('btn-start');
@@ -119,7 +130,6 @@ class SnakeGame {
         this.btnResume = document.getElementById('btn-resume');
         this.btnQuit = document.getElementById('btn-quit');
         this.btnRetry = document.getElementById('btn-retry');
-        this.btnRevive = document.getElementById('btn-revive');
         this.btnShare = document.getElementById('btn-share');
         this.btnMenu = document.getElementById('btn-menu');
         this.btnStatsBack = document.getElementById('btn-stats-back');
@@ -156,10 +166,12 @@ class SnakeGame {
         this.btnResume.addEventListener('click', () => this.resumeGame());
         this.btnQuit.addEventListener('click', () => this.quitToMenu());
         this.btnRetry.addEventListener('click', () => this.retryGame());
-        this.btnRevive.addEventListener('click', () => this.showReviveAd());
         this.btnShare.addEventListener('click', () => this.shareScore());
         this.btnMenu.addEventListener('click', () => this.showMenu());
         this.btnStatsBack.addEventListener('click', () => this.showMenu());
+        document.querySelector('.related-grid')?.addEventListener('click', (event) => {
+            if (event.target.closest('.related-card')) trackSnakeStage('snake_related_click');
+        });
 
         // Direction control buttons (mouse/touch buttons)
         this.setupDirectionButtons();
@@ -204,19 +216,21 @@ class SnakeGame {
 
         // Canvas click/tap to start (improved - works for click, tap, and touch)
         this.canvas.addEventListener('click', () => {
-            if (!this.gameRunning && this.gameState === 'playing') {
-                this.gameRunning = true;
-                this.tapHint.style.display = 'none';
-            }
+            this.beginRun();
         });
 
         // Canvas touch end for mobile tap
         this.canvas.addEventListener('touchend', () => {
-            if (!this.gameRunning && this.gameState === 'playing') {
-                this.gameRunning = true;
-                this.tapHint.style.display = 'none';
-            }
+            this.beginRun();
         });
+    }
+
+    beginRun() {
+        if (!this.gameRunning && this.gameState === 'playing') {
+            this.gameRunning = true;
+            this.tapHint.style.display = 'none';
+            trackSnakeStage('snake_start');
+        }
     }
 
     setupDirectionButtons() {
@@ -434,6 +448,7 @@ class SnakeGame {
         this.gameRunning = false;
         this.gamePaused = false;
         this.frameCount = 0;
+        this.moves = 0;
         this.startTime = Date.now();
         this.hudScore.textContent = '0';
         this.updatePowerupHUD();
@@ -680,6 +695,8 @@ class SnakeGame {
 
             // Add new head
             this.snake.unshift({ x: newX, y: newY });
+            this.moves++;
+            if (this.moves === 1) trackSnakeStage('snake_progress');
 
             // Check food collision
             let foodEaten = false;
@@ -874,18 +891,6 @@ class SnakeGame {
             foodCount: this.stats.foodEaten
         });
 
-        // Report score to daily streak system
-        if (typeof DailyStreak !== 'undefined') DailyStreak.report(this.score);
-
-        // Report achievements
-        if (typeof GameAchievements !== 'undefined') {
-            GameAchievements.report({
-                bestScore: this.highScore,
-                gamesPlayed: this.stats.gamesPlayed,
-                foodEaten: this.stats.foodEaten
-            });
-        }
-
         // Check for new record
         const isNewRecord = leaderboardResult.isNewRecord;
         if (isNewRecord) {
@@ -919,11 +924,8 @@ class SnakeGame {
             this.gameoverScreen.classList.remove('hidden');
         };
 
-        if (typeof GameAds !== 'undefined') {
-            GameAds.showInterstitial({ onComplete: () => showGameOver() });
-        } else {
-            showGameOver();
-        }
+        showGameOver();
+        trackSnakeStage('snake_complete');
     }
 
     getRank(score) {
@@ -944,48 +946,14 @@ class SnakeGame {
         return ranks[0];
     }
 
-    showReviveAd() {
-        if (typeof GameAds !== 'undefined') {
-            GameAds.showRewarded({
-                onReward: () => this.reviveGame(),
-                onSkip: () => {}
-            });
-        } else {
-            this.reviveGame(); // fallback
-        }
-    }
-
-    reviveGame() {
-        this.interstitialOverlay.classList.add('hidden');
-        this.gameoverScreen.classList.add('hidden');
-        this.gameScreen.classList.remove('hidden');
-
-        // Restore game state partially
-        this.gameState = 'playing';
-        this.gameRunning = true;
-        this.gamePaused = false;
-        this.score = Math.floor(this.score / 2); // Lose half score
-        this.hudScore.textContent = this.score;
-        this.lastMoveTime = 0;
-    }
-
-    shareScore() {
-        const rank = this.getRank(this.score);
-        const shareTemplate = window.i18n?.t('share_msg.text') || 'I scored {score} in Snake! {icon} {title} 🐍\nPlay: dopabrain.com/snake-game/';
-        const text = shareTemplate.replace('{score}', this.score).replace('{icon}', rank.icon).replace('{title}', rank.title);
-
-        if (navigator.share) {
-            navigator.share({
-                title: 'Snake Classic',
-                text: text,
-                url: 'https://dopabrain.com/snake-game/'
-            });
-        } else {
-            // Fallback
-            const url = `https://dopabrain.com/snake-game/?score=${this.score}`;
-            const alertMsg = window.i18n?.t('share_msg.alert') || 'Share: {url}';
-            alert(alertMsg.replace('{url}', url));
-        }
+    async shareScore() {
+        const text = 'I played Snake Classic on DopaBrain.';
+        const url = 'https://dopabrain.com/snake-game/';
+        try {
+            if (navigator.share) await navigator.share({ title: 'Snake Classic', text, url });
+            else await navigator.clipboard.writeText(`${text} ${url}`);
+            trackSnakeStage('snake_share');
+        } catch (_) {}
     }
 
     draw() {
@@ -1354,27 +1322,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Start game
     window.game = new SnakeGame();
-
-    if (typeof GameAds !== 'undefined') GameAds.init();
-
-    if (typeof DailyStreak !== 'undefined') {
-      DailyStreak.init({ gameId: 'snake-game', bestScoreKey: 'snake_highscore', minTarget: 3 });
-    }
-
-    if (typeof GameAchievements !== 'undefined') {
-      GameAchievements.init({
-        gameId: 'snake-game',
-        defs: [
-          { id: 'score_10', stat: 'bestScore', target: 10, icon: '\uD83D\uDC0D', name: 'Snake Starter' },
-          { id: 'score_50', stat: 'bestScore', target: 50, icon: '\uD83D\uDC0D', name: 'Snake Master' },
-          { id: 'score_100', stat: 'bestScore', target: 100, icon: '\uD83D\uDC0D', name: 'Snake Legend' },
-          { id: 'games_10', stat: 'gamesPlayed', target: 10, icon: '\uD83C\uDFAE', name: 'Regular Player' },
-          { id: 'games_50', stat: 'gamesPlayed', target: 50, icon: '\uD83C\uDFAE', name: 'Dedicated' },
-          { id: 'food_100', stat: 'foodEaten', target: 100, icon: '\uD83C\uDF4E', name: 'Hungry Snake' },
-          { id: 'food_500', stat: 'foodEaten', target: 500, icon: '\uD83C\uDF4E', name: 'Feast Master' },
-        ]
-      });
-    }
+    trackSnakeStage('snake_view');
 });
 
 // Add displayLeaderboard method to SnakeGame prototype

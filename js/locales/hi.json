@@ -3,13 +3,6 @@
     "loading": "लोड हो रहा है...",
     "skipLink": "सामग्री पर जाएं"
   },
-  "ad": {
-    "placeholder": "विज्ञापन क्षेत्र",
-    "placeholder_interstitial": "विज्ञापन क्षेत्र (पूर्णस्क्रीन)",
-    "label": "विज्ञापन",
-    "countdown": "सेकंड में बंद करें",
-    "close": "✕ बंद करें"
-  },
   "menu": {
     "subtitle": "क्लासिक सांप का खेल",
     "highScore": "उच्चतम स्कोर",
@@ -59,7 +52,6 @@
     "score": "स्कोर",
     "best": "सर्वश्रेष्ठ",
     "newRecord": "🎉 नया रिकॉर्ड!",
-    "revive": "विज्ञापन देखें और पुनर्जीवित करें",
     "retry": "फिर से कोशिश करें",
     "share": "📤 साझा करें",
     "menu": "🏠 मेनू"
@@ -70,10 +62,6 @@
     "foodEaten": "खाया गया भोजन",
     "survivalTime": "कुल जीवित समय",
     "minuteUnit": "मिनट"
-  },
-  "share_msg": {
-    "text": "स्नेक में {score} अंक! {icon} {title} 🐍\nखेलें: dopabrain.com/snake-game/",
-    "alert": "शेयर करें: {url}"
   },
   "recommendations": {
     "title": "ये भी आजमाएं"

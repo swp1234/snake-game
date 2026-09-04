@@ -3,13 +3,6 @@
     "loading": "Загрузка...",
     "skipLink": "Перейти к содержанию"
   },
-  "ad": {
-    "placeholder": "Область объявления",
-    "placeholder_interstitial": "Область объявления (полноэкранное)",
-    "label": "Объявление",
-    "countdown": "секунд до закрытия",
-    "close": "✕ Закрыть"
-  },
   "menu": {
     "subtitle": "Классическая игра Змейка",
     "highScore": "Рекордный счет",
@@ -59,7 +52,6 @@
     "score": "Счет",
     "best": "Лучше",
     "newRecord": "🎉 Новый рекорд!",
-    "revive": "Посмотрите объявление и возродитесь",
     "retry": "Попробовать еще",
     "share": "📤 Поделиться",
     "menu": "🏠 Меню"
@@ -70,10 +62,6 @@
     "foodEaten": "Съедено еды",
     "survivalTime": "Общее время",
     "minuteUnit": "мин"
-  },
-  "share_msg": {
-    "text": "{score} очков в Змейке! {icon} {title} 🐍\nИграй: dopabrain.com/snake-game/",
-    "alert": "Поделиться: {url}"
   },
   "recommendations": {
     "title": "Попробуйте и это"

@@ -3,13 +3,6 @@
     "loading": "Carregando...",
     "skipLink": "Ir para o conteúdo"
   },
-  "ad": {
-    "placeholder": "Área de anúncio",
-    "placeholder_interstitial": "Área de anúncio (tela cheia)",
-    "label": "Anúncio",
-    "countdown": "segundos até fechar",
-    "close": "✕ Fechar"
-  },
   "menu": {
     "subtitle": "Jogo Clássico da Cobra",
     "highScore": "Pontuação mais alta",
@@ -59,7 +52,6 @@
     "score": "Pontuação",
     "best": "Melhor",
     "newRecord": "🎉 Novo recorde!",
-    "revive": "Veja anúncio e reviva",
     "retry": "Tentar novamente",
     "share": "📤 Compartilhar",
     "menu": "🏠 Menu"
@@ -70,10 +62,6 @@
     "foodEaten": "Comida comida",
     "survivalTime": "Tempo total",
     "minuteUnit": "min"
-  },
-  "share_msg": {
-    "text": "{score} pontos no Snake! {icon} {title} 🐍\nJogue: dopabrain.com/snake-game/",
-    "alert": "Compartilhar: {url}"
   },
   "recommendations": {
     "title": "Tente estes também"

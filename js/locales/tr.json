@@ -3,13 +3,6 @@
     "loading": "Yükleniyor...",
     "skipLink": "İçeriğe geç"
   },
-  "ad": {
-    "placeholder": "Reklam alanı",
-    "placeholder_interstitial": "Reklam alanı (tam ekran)",
-    "label": "Reklam",
-    "countdown": "saniye sonra kapat",
-    "close": "✕ Kapat"
-  },
   "menu": {
     "subtitle": "Klasik Yılan Oyunu",
     "highScore": "En Yüksek Skor",
@@ -59,7 +52,6 @@
     "score": "Skor",
     "best": "En İyi",
     "newRecord": "🎉 Yeni Rekor!",
-    "revive": "Reklam izle ve canlan",
     "retry": "Tekrar Dene",
     "share": "📤 Paylaş",
     "menu": "🏠 Menu"
@@ -70,10 +62,6 @@
     "foodEaten": "Yenen Yiyecek",
     "survivalTime": "Toplam Süre",
     "minuteUnit": "dk"
-  },
-  "share_msg": {
-    "text": "Yılan'da {score} puan! {icon} {title} 🐍\nOyna: dopabrain.com/snake-game/",
-    "alert": "Paylaş: {url}"
   },
   "recommendations": {
     "title": "Bunu da Dene"

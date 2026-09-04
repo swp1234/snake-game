@@ -1,110 +1,35 @@
-/**
- * Snake Classic - Service Worker
- * Enables offline functionality and PWA features
- */
-
-const CACHE_NAME = 'snake-classic-v5';
+const CACHE_PREFIX = 'snake-classic-';
+const CACHE_NAME = 'snake-classic-v6';
+const APP_PATH = new URL('./', self.location.href).pathname;
 const ASSETS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/css/style.css',
-    '/assets/snake-head-opt.png',
-    '/assets/food-opt.png',
-    '/assets/body-opt.png',
-    '/js/app.js',
-    '/js/i18n.js',
-    '/js/sound-engine.js',
-    '/js/locales/ko.json',
-    '/js/locales/en.json',
-    '/js/locales/zh.json',
-    '/js/locales/hi.json',
-    '/js/locales/ru.json',
-    '/js/locales/ja.json',
-    '/js/locales/es.json',
-    '/js/locales/pt.json',
-    '/js/locales/id.json',
-    '/js/locales/tr.json',
-    '/js/locales/de.json',
-    '/js/locales/fr.json',
-    '/icon-192.svg',
-    '/icon-512.svg'
+    './', './index.html', './manifest.json', './css/style.css', './assets/bg-opt.jpg',
+    './assets/snake-head-opt.png', './assets/food-opt.png', './assets/body-opt.png',
+    './js/app.js', './js/i18n.js', './js/sound-engine.js', './js/storage-manager.js',
+    './js/leaderboard-manager.js', './icon-192.svg', './icon-512.svg',
+    './js/locales/ko.json', './js/locales/en.json', './js/locales/zh.json',
+    './js/locales/hi.json', './js/locales/ru.json', './js/locales/ja.json',
+    './js/locales/es.json', './js/locales/pt.json', './js/locales/id.json',
+    './js/locales/tr.json', './js/locales/de.json', './js/locales/fr.json'
 ];
 
-// Install event
 self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
-                console.warn('Cache addAll failed:', err);
-                // Continue even if some assets fail to cache
-                return Promise.resolve();
-            });
-        })
-    );
+    event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE)));
     self.skipWaiting();
 });
 
-// Activate event
 self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (cacheName !== CACHE_NAME) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
+    event.waitUntil(caches.keys().then((names) => Promise.all(
+        names.filter((name) => name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME).map((name) => caches.delete(name))
+    )));
     self.clients.claim();
 });
 
-// Fetch event
 self.addEventListener('fetch', (event) => {
-    // Skip non-GET requests
-    if (event.request.method !== 'GET') {
-        return;
-    }
-
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            // Return cached response if found
-            if (response) {
-                return response;
-            }
-
-            // Fetch from network
-            return fetch(event.request)
-                .then((response) => {
-                    // Don't cache if not successful
-                    if (!response || response.status !== 200 || response.type === 'error') {
-                        return response;
-                    }
-
-                    // Cache successful responses
-                    const responseToCache = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, responseToCache);
-                    });
-
-                    return response;
-                })
-                .catch(() => {
-                    // Return offline page or cached response
-                    return caches.match(event.request);
-                });
-        })
-    );
-});
-
-// Background sync (future feature)
-self.addEventListener('sync', (event) => {
-    if (event.tag === 'sync-stats') {
-        event.waitUntil(
-            // Sync stats with server
-            Promise.resolve()
-        );
-    }
+    if (event.request.method !== 'GET') return;
+    const url = new URL(event.request.url);
+    if (url.origin !== self.location.origin || !url.pathname.startsWith(APP_PATH)) return;
+    event.respondWith(fetch(event.request).then((response) => {
+        if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response.clone()));
+        return response;
+    }).catch(() => caches.match(event.request).then((cached) => cached || caches.match('./index.html'))));
 });

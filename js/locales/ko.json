@@ -3,13 +3,6 @@
     "loading": "로딩 중...",
     "skipLink": "본문으로 이동"
   },
-  "ad": {
-    "placeholder": "광고 영역",
-    "placeholder_interstitial": "광고 영역 (전면)",
-    "label": "광고",
-    "countdown": "초 후 닫기",
-    "close": "✕ 닫기"
-  },
   "menu": {
     "subtitle": "클래식 뱀 게임",
     "highScore": "최고 점수",
@@ -59,7 +52,6 @@
     "score": "점수",
     "best": "최고",
     "newRecord": "🎉 새 기록!",
-    "revive": "광고 보고 부활하기",
     "retry": "다시 하기",
     "share": "📤 공유",
     "menu": "🏠 메뉴"
@@ -70,10 +62,6 @@
     "foodEaten": "먹이 먹음",
     "survivalTime": "총 생존시간",
     "minuteUnit": "분"
-  },
-  "share_msg": {
-    "text": "뱀 게임에서 {score}점! {icon} {title} 🐍\n플레이: dopabrain.com/snake-game/",
-    "alert": "공유하기: {url}"
   },
   "recommendations": {
     "title": "이것도 해보세요"

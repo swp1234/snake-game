@@ -3,13 +3,6 @@
     "loading": "Chargement...",
     "skipLink": "Aller au contenu"
   },
-  "ad": {
-    "placeholder": "Zone publicitaire",
-    "placeholder_interstitial": "Zone publicitaire (plein écran)",
-    "label": "Annonce",
-    "countdown": "secondes avant la fermeture",
-    "close": "✕ Fermer"
-  },
   "menu": {
     "subtitle": "Jeu de Serpent Classique",
     "highScore": "Meilleur Score",
@@ -59,7 +52,6 @@
     "score": "Score",
     "best": "Meilleur",
     "newRecord": "🎉 Nouveau record!",
-    "revive": "Regardez une annonce et revitalisez",
     "retry": "Réessayer",
     "share": "📤 Partager",
     "menu": "🏠 Menu"
@@ -70,10 +62,6 @@
     "foodEaten": "Nourriture mangée",
     "survivalTime": "Temps total",
     "minuteUnit": "min"
-  },
-  "share_msg": {
-    "text": "{score} points au Snake ! {icon} {title} 🐍\nJouer : dopabrain.com/snake-game/",
-    "alert": "Partager : {url}"
   },
   "recommendations": {
     "title": "Essayez-le aussi"

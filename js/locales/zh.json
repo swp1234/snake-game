@@ -3,13 +3,6 @@
     "loading": "加载中...",
     "skipLink": "跳到内容"
   },
-  "ad": {
-    "placeholder": "广告区域",
-    "placeholder_interstitial": "广告区域（全屏）",
-    "label": "广告",
-    "countdown": "秒后关闭",
-    "close": "✕ 关闭"
-  },
   "menu": {
     "subtitle": "经典贪食蛇游戏",
     "highScore": "最高分数",
@@ -59,7 +52,6 @@
     "score": "分数",
     "best": "最高",
     "newRecord": "🎉 新纪录！",
-    "revive": "观看广告复活",
     "retry": "重试",
     "share": "📤 分享",
     "menu": "🏠 菜单"
@@ -70,10 +62,6 @@
     "foodEaten": "吃掉食物",
     "survivalTime": "总生存时间",
     "minuteUnit": "分钟"
-  },
-  "share_msg": {
-    "text": "贪吃蛇得了{score}分！{icon} {title} 🐍\n来玩：dopabrain.com/snake-game/",
-    "alert": "分享：{url}"
   },
   "recommendations": {
     "title": "也试试这些"

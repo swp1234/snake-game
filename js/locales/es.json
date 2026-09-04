@@ -3,13 +3,6 @@
     "loading": "Cargando...",
     "skipLink": "Ir al contenido"
   },
-  "ad": {
-    "placeholder": "Área de anuncio",
-    "placeholder_interstitial": "Área de anuncio (pantalla completa)",
-    "label": "Anuncio",
-    "countdown": "segundos para cerrar",
-    "close": "✕ Cerrar"
-  },
   "menu": {
     "subtitle": "Juego Clásico de la Serpiente",
     "highScore": "Puntuación más alta",
@@ -59,7 +52,6 @@
     "score": "Puntuación",
     "best": "Mejor",
     "newRecord": "🎉 ¡Nuevo récord!",
-    "revive": "Ver anuncio y revivir",
     "retry": "Intentar de nuevo",
     "share": "📤 Compartir",
     "menu": "🏠 Menú"
@@ -70,10 +62,6 @@
     "foodEaten": "Comida comida",
     "survivalTime": "Tiempo total",
     "minuteUnit": "min"
-  },
-  "share_msg": {
-    "text": "¡{score} puntos en Snake! {icon} {title} 🐍\nJuega: dopabrain.com/snake-game/",
-    "alert": "Compartir: {url}"
   },
   "recommendations": {
     "title": "Intenta estas también"

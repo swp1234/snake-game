@@ -3,13 +3,6 @@
     "loading": "Memuat...",
     "skipLink": "Lewati ke konten"
   },
-  "ad": {
-    "placeholder": "Area iklan",
-    "placeholder_interstitial": "Area iklan (layar penuh)",
-    "label": "Iklan",
-    "countdown": "detik untuk ditutup",
-    "close": "✕ Tutup"
-  },
   "menu": {
     "subtitle": "Permainan Ular Klasik",
     "highScore": "Skor Tertinggi",
@@ -59,7 +52,6 @@
     "score": "Skor",
     "best": "Terbaik",
     "newRecord": "🎉 Rekor Baru!",
-    "revive": "Tonton iklan & hidup kembali",
     "retry": "Coba Lagi",
     "share": "📤 Bagikan",
     "menu": "🏠 Menu"
@@ -70,10 +62,6 @@
     "foodEaten": "Makanan Dimakan",
     "survivalTime": "Total Bertahan",
     "minuteUnit": "menit"
-  },
-  "share_msg": {
-    "text": "Skor {score} di Snake! {icon} {title} 🐍\nMain: dopabrain.com/snake-game/",
-    "alert": "Bagikan: {url}"
   },
   "recommendations": {
     "title": "Coba Juga Ini"

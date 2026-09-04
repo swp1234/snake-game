@@ -2,21 +2,18 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="max-image-preview:large">
 
     <!-- Resource hints for external domains -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 
     <title>Snake Game - Free Online Classic Snake | DopaBrain</title>
 
     <!-- SEO -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3600813755953882" crossorigin="anonymous"></script>
     <meta name="description" content="Play the classic Snake game reimagined with neon graphics and smooth controls. Free online arcade game with multiple modes. Challenge your high score on DopaBrain!">
-    <meta name="dateModified" content="2026-07-07">
+    <meta name="dateModified" content="2026-09-05">
     <meta name="keywords" content="뱀 게임, 스네이크, 클래식 게임, 캐주얼 게임, 무료 게임, 아케이드 게임, 모바일 게임">
     <link rel="canonical" href="https://dopabrain.com/snake-game/">
 
@@ -84,65 +81,8 @@
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock"
         },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.5",
-            "ratingCount": "2800",
-            "bestRating": "5",
-            "worstRating": "1"
-        },
-        "featureList": "Neon gradients, swipe controls, multiple food types, 4 power-ups, infinite/wall modes, particle effects, sound effects, high score saving, leaderboard, achievements, 12 languages",
+        "featureList": "Neon gradients, swipe controls, multiple food types, 4 power-ups, infinite/wall modes, particle effects, sound effects, high score saving, leaderboard, 12 languages",
         "gamePlatform": "Web Browser"
-    }
-    </script>
-
-    <!-- FAQPage Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is Snake Classic?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Snake Classic is a free online reimagining of the beloved Snake game with neon graphics, smooth controls, and multiple game modes. Guide your snake to eat food, grow longer, and avoid crashing into walls or yourself."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How do I control the snake?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Use arrow keys or WASD on desktop, or swipe in the direction you want the snake to move on mobile. You can also use the on-screen direction buttons. Choose between Wall Mode (walls are deadly) and Infinite Mode (pass through walls)."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Is Snake Classic free to play? Do I need to download anything?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, Snake Classic is 100% free to play in your web browser with no download required. Just open the page and start playing instantly on any device."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How can I improve my Snake game high score?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Plan your route ahead and avoid trapping yourself in corners. Collect power-ups for bonus points. Use Infinite Mode to practice without wall collisions. Try to keep the snake moving in wide loops to maintain space."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Can I play Snake Classic on mobile devices?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes! Snake Classic features responsive design with swipe controls and on-screen direction buttons optimized for smartphones and tablets. It works perfectly on any modern mobile browser."
-                }
-            }
-        ]
     }
     </script>
 
@@ -177,10 +117,9 @@
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8GSWM40TV"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-J8GSWM40TV');</script>
-<script>setTimeout(function(){if(typeof gtag!=='undefined')gtag('event','page_engage',{event_category:'snake_game',engagement_time_msec:5000})},5000);</script>
 
 </head>
-<body>
+<body data-ad-serving="suspended-invalid-traffic-2026-09-03">
     <div class="app-loader" id="app-loader">
         <div class="loader-content">
             <div class="loader-emoji">🐍</div>
@@ -208,10 +147,6 @@
     <div class="game-wrapper" id="main-content">
         <!-- === MENU SCREEN === -->
         <div class="screen menu-screen active" id="menu-screen">
-            <div class="ad-banner ad-top">
-                <span class="ad-placeholder" data-i18n="ad.placeholder">광고 영역</span>
-            </div>
-
             <div class="menu-content">
                 <div class="game-logo">
                     <span class="logo-snake">🐍</span>
@@ -325,10 +260,6 @@
                 <div class="go-new-record hidden" id="go-new-record" data-i18n="gameover.newRecord">🎉 새 기록!</div>
 
                 <div class="go-buttons">
-                    <button class="btn-revive" id="btn-revive">
-                        <span class="revive-icon">📺</span>
-                        <span data-i18n="gameover.revive">광고 보고 부활하기</span>
-                    </button>
                     <button class="btn-primary btn-retry" id="btn-retry">
                         <span data-i18n="gameover.retry">다시 하기</span>
                     </button>
@@ -361,9 +292,6 @@
                 </div>
             </div>
 
-            <div class="ad-banner ad-bottom-go">
-                <span class="ad-placeholder" data-i18n="ad.placeholder">광고 영역</span>
-            </div>
         </div>
 
         <!-- === STATS SCREEN === -->
@@ -375,17 +303,6 @@
             <div class="stats-content" id="stats-content"></div>
         </div>
 
-        <!-- === INTERSTITIAL AD OVERLAY === -->
-        <div class="overlay interstitial-overlay hidden" id="interstitial-overlay">
-            <div class="interstitial-card">
-                <p class="interstitial-label" data-i18n="ad.label">광고</p>
-                <div class="interstitial-placeholder" data-i18n="ad.placeholder_interstitial">광고 영역 (전면)</div>
-                <div class="interstitial-timer">
-                    <span id="ad-countdown">5</span><span data-i18n="ad.countdown">초 후 닫기</span>
-                </div>
-                <button class="btn-close-ad hidden" id="btn-close-ad" data-i18n="ad.close">✕ 닫기</button>
-            </div>
-        </div>
     </div>
 
     <!-- Footer with Home Link -->
@@ -401,9 +318,6 @@
     <script src="js/i18n.js" defer></script>
     <script src="js/sound-engine.js" defer></script>
     <script src="/portal/js/haptic.js" defer></script>
-    <script src="/portal/js/daily-streak.js" defer></script>
-    <script src="/portal/js/game-ads.js" defer></script>
-    <script src="/portal/js/achievements.js" defer></script>
     <script src="js/app.js" defer></script>
 
     <script>
@@ -424,8 +338,8 @@
             position: fixed;
             top: 12px;
             right: 100px;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
@@ -442,6 +356,5 @@
         .sound-toggle:hover { background: rgba(255,255,255,0.2); }
         .sound-toggle:active { transform: scale(0.95); }
     </style>
-    <script src="/portal/js/cross-promo.js" defer></script>
 </body>
 </html>

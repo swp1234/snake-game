@@ -3,13 +3,6 @@
     "loading": "Wird geladen...",
     "skipLink": "Zum Inhalt"
   },
-  "ad": {
-    "placeholder": "Anzeigenbereich",
-    "placeholder_interstitial": "Anzeigenbereich (Vollbild)",
-    "label": "Anzeige",
-    "countdown": "Sekunden bis zum Schließen",
-    "close": "✕ Schließen"
-  },
   "menu": {
     "subtitle": "Klassisches Schlangespiel",
     "highScore": "Höchste Punktzahl",
@@ -59,7 +52,6 @@
     "score": "Punktzahl",
     "best": "Beste",
     "newRecord": "🎉 Neuer Rekord!",
-    "revive": "Anzeige ansehen und wiederbeleben",
     "retry": "Erneut versuchen",
     "share": "📤 Teilen",
     "menu": "🏠 Menü"
@@ -70,10 +62,6 @@
     "foodEaten": "Essen gegessen",
     "survivalTime": "Gesamtzeit",
     "minuteUnit": "Min"
-  },
-  "share_msg": {
-    "text": "{score} Punkte bei Snake! {icon} {title} 🐍\nSpiel: dopabrain.com/snake-game/",
-    "alert": "Teilen: {url}"
   },
   "recommendations": {
     "title": "Versuchen Sie auch diese"

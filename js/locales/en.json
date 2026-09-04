@@ -3,13 +3,6 @@
     "loading": "Loading...",
     "skipLink": "Skip to content"
   },
-  "ad": {
-    "placeholder": "Advertisement",
-    "placeholder_interstitial": "Advertisement Area",
-    "label": "Ad",
-    "countdown": "seconds until close",
-    "close": "✕ Close"
-  },
   "menu": {
     "subtitle": "Classic Snake Game",
     "highScore": "High Score",
@@ -59,7 +52,6 @@
     "score": "Score",
     "best": "Best",
     "newRecord": "🎉 New Record!",
-    "revive": "Watch Ad & Revive",
     "retry": "Try Again",
     "share": "📤 Share",
     "menu": "🏠 Menu"
@@ -70,10 +62,6 @@
     "foodEaten": "Food Eaten",
     "survivalTime": "Total Survival",
     "minuteUnit": "min"
-  },
-  "share_msg": {
-    "text": "I scored {score} in Snake! {icon} {title} 🐍\nPlay: dopabrain.com/snake-game/",
-    "alert": "Share: {url}"
   },
   "recommendations": {
     "title": "Try These Too"
