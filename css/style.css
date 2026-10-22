@@ -379,6 +379,9 @@ body {
     transition: var(--transition);
     padding: 6px 12px;
     border-radius: 8px;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
 }
 
 .home-link:hover {
@@ -894,6 +897,9 @@ body {
     transition: var(--transition);
     padding: 6px 12px;
     border-radius: 8px;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
 }
 
 .back-link:hover {
